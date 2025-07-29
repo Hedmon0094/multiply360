@@ -108,45 +108,51 @@ export default function PartnersCornerPage() {
        </div>
 
       {/* Give & Grow Section */}
-      <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl">
-        <div className="grid md:grid-cols-2">
-            <div className="p-8">
-                <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100">Give & Grow</h2>
-                <p className="mt-2 text-muted-foreground">
-                    Your financial partnership is vital for advancing the Gospel. Choose a way to give that works for you.
-                </p>
-                <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                     <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-colors duration-300">
-                       <PiggyBank className="mr-2 h-5 w-5"/> One-Time Gift
-                    </Button>
-                    <Button size="lg" variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-colors duration-300">
-                       <Handshake className="mr-2 h-5 w-5"/> Monthly Partner
-                    </Button>
+       <div className="text-center">
+            <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl inline-block">
+                <div className="grid md:grid-cols-2">
+                    <div className="p-8 text-left">
+                        <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100">Give & Grow</h2>
+                        <p className="mt-2 text-muted-foreground">
+                            Your financial partnership is vital for advancing the Gospel.
+                        </p>
+                    </div>
+                    <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50 text-left">
+                        <h3 className="text-xl font-semibold">Partner Resources</h3>
+                        <p className="text-muted-foreground mt-1">Access exclusive reports and updates.</p>
+                        <div className="mt-4 space-y-3">
+                            <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
+                                <Download className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
+                                <div>
+                                    <p className="font-semibold">Annual Impact Report 2023</p>
+                                    <p className="text-xs text-muted-foreground">Download the full PDF report.</p>
+                                </div>
+                            </button>
+                            <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
+                                <Megaphone className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
+                                <div>
+                                    <p className="font-semibold">A Message from the Director</p>
+                                    <p className="text-xs text-muted-foreground">Watch the latest video update.</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                 <p className="text-xs text-muted-foreground mt-4">Secure giving options coming soon.</p>
-            </div>
-            <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50">
-                 <h3 className="text-xl font-semibold">Partner Resources</h3>
-                 <p className="text-muted-foreground mt-1">Access exclusive reports and updates.</p>
-                 <div className="mt-4 space-y-3">
-                    <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
-                        <Download className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
-                        <div>
-                            <p className="font-semibold">Annual Impact Report 2023</p>
-                            <p className="text-xs text-muted-foreground">Download the full PDF report.</p>
-                        </div>
-                    </button>
-                    <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
-                        <Megaphone className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
-                         <div>
-                            <p className="font-semibold">A Message from the Director</p>
-                            <p className="text-xs text-muted-foreground">Watch the latest video update.</p>
-                        </div>
-                    </button>
-                 </div>
-            </div>
+            </Card>
         </div>
-      </Card>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+                <PiggyBank className="mr-2 h-5 w-5"/> One-Time Gift
+            </Button>
+            <Button size="lg" variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+                <Handshake className="mr-2 h-5 w-5"/> Monthly Partner
+            </Button>
+        </div>
+        <p className="text-xs text-muted-foreground text-center">Secure giving options coming soon.</p>
+
+
     </div>
   );
 }
+
