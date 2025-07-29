@@ -45,7 +45,7 @@ export default function FaithChallengesPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 items-start">
-        <Card className="shadow-lg border-primary/20 bg-primary/5">
+        <Card className="shadow-lg border-primary/20 bg-primary/5 dark:bg-primary/10">
             <CardHeader>
                 <CardTitle>🔥 Active Challenges</CardTitle>
                 <CardDescription>Your current progress in ongoing ministry campaigns.</CardDescription>
@@ -62,7 +62,7 @@ export default function FaithChallengesPage() {
                                 <p className="text-sm text-muted-foreground">{challenge.description}</p>
                             </div>
                              <Button variant="outline" size="sm">
-                                <CheckSquare className="mr-2 h-4 w-4 text-emerald-500"/> Check In
+                                <CheckSquare className="mr-2 h-4 w-4 text-accent"/> Check In
                             </Button>
                         </div>
                         <div className="mt-4">
@@ -74,7 +74,7 @@ export default function FaithChallengesPage() {
             </CardContent>
         </Card>
 
-        <Card className="shadow-lg border-amber-500/20 bg-amber-500/5">
+        <Card className="shadow-lg border-amber-500/20 bg-amber-500/5 dark:bg-amber-900/20">
             <CardHeader>
                 <CardTitle>🏆 Your Badges</CardTitle>
                 <CardDescription>Celebrate your completed faith challenges and milestones.</CardDescription>

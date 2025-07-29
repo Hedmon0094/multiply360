@@ -20,9 +20,9 @@ type Story = {
 
 export function ImpactStoryCard({ story }: { story: Story }) {
   return (
-    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-amber-50/20 dark:bg-amber-900/10 border-amber-200 dark:border-amber-800/50">
-      <CardHeader>
-        <div className="relative h-48 w-full rounded-lg overflow-hidden">
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-card">
+      <CardHeader className="p-0">
+        <div className="relative h-48 w-full rounded-t-lg overflow-hidden">
             <Image 
                 src={story.mediaUrl}
                 alt={story.title}
@@ -42,7 +42,7 @@ export function ImpactStoryCard({ story }: { story: Story }) {
             </div>
         </div>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="flex-grow p-6">
         <p className="text-sm text-muted-foreground mb-4">{story.storySnippet}</p>
         <div className="flex items-center text-xs text-muted-foreground gap-2">
              <User className="h-3 w-3" />
@@ -53,7 +53,7 @@ export function ImpactStoryCard({ story }: { story: Story }) {
             <span>Theme: {story.theme}</span>
         </div>
       </CardContent>
-      <CardFooter className="bg-amber-100/30 dark:bg-amber-900/20 p-4 flex justify-between items-center">
+      <CardFooter className="bg-muted/50 p-4 flex justify-between items-center">
         <Button variant="outline" className="bg-white dark:bg-card">
             <Heart className="mr-2 h-4 w-4 text-rose-500"/>
             <span className="font-semibold">{story.likes}</span>

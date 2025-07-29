@@ -22,22 +22,22 @@ const praiseReports = [
 
 export default function PrayerNetworkPage() {
   return (
-    <div className="flex flex-col gap-8">
-      <div>
+    <div className="flex flex-col gap-8 bg-purple-50 dark:bg-purple-900/10 -m-8 p-8">
+      <div className="max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight">Prayer Network</h1>
-        <p className="text-muted-foreground">
-          Join us in prayer for the nation, our teams, and the harvest.
+        <p className="text-muted-foreground mt-2">
+          Join us in prayer for the nation, our teams, and the harvest. "For where two or three gather in my name, there am I with them." - Matthew 18:20
         </p>
       </div>
 
       <Tabs defaultValue="points" className="w-full">
         <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
-          <TabsTrigger value="points">Prayer Points</TabsTrigger>
-          <TabsTrigger value="praise">Praise Wall</TabsTrigger>
-          <TabsTrigger value="submit">Submit a Prayer</TabsTrigger>
+          <TabsTrigger value="points">🙏 Prayer Points</TabsTrigger>
+          <TabsTrigger value="praise">🎉 Praise Wall</TabsTrigger>
+          <TabsTrigger value="submit">💌 Submit a Request</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="points">
+        <TabsContent value="points" className="mt-6">
             <Card className="bg-transparent shadow-none border-none">
                 <CardHeader>
                     <CardTitle>This Week's Prayer Focus</CardTitle>
@@ -45,13 +45,13 @@ export default function PrayerNetworkPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                 {prayerPoints.map(point => (
-                     <div key={point.id} className="rounded-lg border bg-card p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                     <div key={point.id} className="rounded-lg border bg-card p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all hover:shadow-md">
                         <div className="flex-grow">
                             <Badge variant="secondary" className="mb-2">{point.category}</Badge>
                             <h3 className="font-semibold">{point.title}</h3>
                             <p className="text-sm text-muted-foreground mt-1">{point.text}</p>
                         </div>
-                        <Button variant="outline" className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                        <Button variant="outline" className="flex items-center gap-2 shrink-0 w-full sm:w-auto group">
                             <Heart className="h-4 w-4 text-rose-500 transition-transform group-hover:scale-110" /> 
                             <span>I Prayed ({point.count})</span>
                         </Button>
@@ -61,7 +61,7 @@ export default function PrayerNetworkPage() {
             </Card>
         </TabsContent>
 
-        <TabsContent value="praise">
+        <TabsContent value="praise" className="mt-6">
            <Card className="bg-transparent shadow-none border-none">
                 <CardHeader>
                     <CardTitle>Praise Wall</CardTitle>
@@ -69,8 +69,8 @@ export default function PrayerNetworkPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {praiseReports.map(report => (
-                        <div key={report.id} className="border-l-4 border-emerald-500 pl-4 py-3 bg-emerald-500/10 rounded-r-lg">
-                             <h3 className="font-semibold text-emerald-800 dark:text-emerald-300">{report.title}</h3>
+                        <div key={report.id} className="border-l-4 border-accent pl-4 py-3 bg-accent/10 rounded-r-lg">
+                             <h3 className="font-semibold text-accent-foreground/80 dark:text-accent-foreground/90">{report.title}</h3>
                             <p className="text-sm text-muted-foreground mt-1">{report.text}</p>
                         </div>
                     ))}
@@ -78,7 +78,7 @@ export default function PrayerNetworkPage() {
             </Card>
         </TabsContent>
 
-        <TabsContent value="submit">
+        <TabsContent value="submit" className="mt-6">
             <Card>
                 <CardHeader>
                     <CardTitle>Submit a Prayer Request</CardTitle>

@@ -38,7 +38,7 @@ export function LayoutClientProvider({
 
   if (isAuthPage) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-muted/40">
+      <main className="flex min-h-screen items-center justify-center bg-background">
         {children}
       </main>
     );
@@ -50,9 +50,9 @@ export function LayoutClientProvider({
             <Sidebar>
                 <MainSidebar />
             </Sidebar>
-            <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
+            <SidebarInset>
                 <Header />
-                <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
+                <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
                     {children}
                 </main>
             </SidebarInset>

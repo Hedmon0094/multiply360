@@ -3,14 +3,13 @@ import { Progress } from "@/components/ui/progress";
 
 export function LeadershipPipeline() {
   const pipelineStages = [
-    { name: "Win", count: 328, goal: 500, color: "bg-sky-500" },
+    { name: "Win", count: 328, goal: 500, color: "bg-primary" },
     { name: "Build", count: 112, goal: 200, color: "bg-amber-500" },
-    { name: "Send", count: 45, goal: 100, color: "bg-emerald-500" },
+    { name: "Send", count: 45, goal: 100, color: "bg-accent" },
   ];
 
   return (
-    <Card className="h-full shadow-lg bg-white dark:bg-card bg-[url('/pipeline-bg.svg')] bg-cover bg-no-repeat">
-      <div className="h-full bg-card/80 dark:bg-card/90 backdrop-blur-sm rounded-lg">
+    <Card className="h-full">
         <CardHeader>
             <CardTitle>Discipleship Journey</CardTitle>
             <CardDescription>Progress in the Win-Build-Send strategy.</CardDescription>
@@ -24,12 +23,11 @@ export function LeadershipPipeline() {
                     <span className="text-sm font-medium text-foreground">{stage.name}</span>
                     <span className="text-sm font-medium text-muted-foreground">{stage.count} / {stage.goal}</span>
                 </div>
-                <Progress value={progress} className="h-3 bg-muted" indicatorClassName={stage.color} />
+                <Progress value={progress} className="h-3" indicatorClassName={stage.color} />
                 </div>
             );
             })}
         </CardContent>
-      </div>
     </Card>
   );
 }

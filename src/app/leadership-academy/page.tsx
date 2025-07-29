@@ -11,7 +11,7 @@ const courses = [
     title: "Foundations of Discipleship",
     description: "Learn the core principles of what it means to be a disciple and how to disciple others.",
     level: "Beginner",
-    levelColor: "text-emerald-500",
+    levelColor: "text-accent",
     progress: 75,
     modules: 8,
     icon: <BookOpen className="h-6 w-6 text-primary" />
@@ -122,7 +122,7 @@ export default function LeadershipAcademyPage() {
              </Card>
              <Card className="shadow-lg">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><CheckCircle className="text-emerald-500" /> Certificates</CardTitle>
+                    <CardTitle className="flex items-center gap-2"><CheckCircle className="text-accent" /> Certificates</CardTitle>
                     <CardDescription>Download your course completion certificates.</CardDescription>
                 </CardHeader>
                 <CardContent className="text-center text-muted-foreground py-8">

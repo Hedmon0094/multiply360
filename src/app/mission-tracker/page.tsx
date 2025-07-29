@@ -12,8 +12,8 @@ const personalGoals = [
         description: "Share your faith with 5 people this week.",
         current: 3,
         goal: 5,
-        icon: <Users className="h-6 w-6 text-sky-500" />,
-        color: "bg-sky-500"
+        icon: <Users className="h-6 w-6 text-primary" />,
+        color: "bg-primary"
     },
     {
         title: "Prayer Streak",
@@ -28,8 +28,8 @@ const personalGoals = [
         description: "Complete the first 3 sessions of 'Foundations'.",
         current: 1,
         goal: 3,
-        icon: <Target className="h-6 w-6 text-emerald-500" />,
-        color: "bg-emerald-500"
+        icon: <Target className="h-6 w-6 text-accent" />,
+        color: "bg-accent"
     }
 ];
 
@@ -58,7 +58,7 @@ export default function MissionTrackerPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 items-start">
-        <Card className="shadow-lg">
+        <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Target className="text-primary" />
@@ -85,7 +85,7 @@ export default function MissionTrackerPage() {
                             <div className="mt-4">
                                 <Progress value={progressValue} indicatorClassName={goal.color} />
                                 <div className="flex justify-between items-center mt-1">
-                                    <span className={`text-sm font-medium`} style={{color: `hsl(var(--${goal.color.replace('bg-','').split('-')[0]}))`} }>{goal.current} of {goal.goal} completed</span>
+                                    <span className={`text-sm font-medium text-muted-foreground`}>{goal.current} of {goal.goal} completed</span>
                                      {progressValue === 100 && <Award className="h-5 w-5 text-yellow-500" />}
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ export default function MissionTrackerPage() {
             </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Users className="text-primary" />
@@ -141,4 +141,3 @@ export default function MissionTrackerPage() {
     </div>
   );
 }
-

@@ -118,118 +118,116 @@ export function MainSidebar() {
       <SidebarHeader>
         <Logo />
       </SidebarHeader>
-      <SidebarContent className="p-2 bg-[url('/sidebar-bg.png')] bg-cover bg-center">
-        <div className="bg-sidebar/80 backdrop-blur-sm rounded-lg h-full flex flex-col">
-            <SidebarMenu className="flex-1">
+      <SidebarContent className="p-2">
+        <SidebarMenu className="flex-1">
+          <SidebarGroup>
+            {mainMenuItems.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+          </SidebarGroup>
+          <SidebarSeparator className="my-1" />
+          <SidebarGroup>
+            <SidebarGroupLabel>Growth Tools</SidebarGroupLabel>
+              {growthToolsItems.map((item) => (
+                <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+          </SidebarGroup>
+          <SidebarSeparator className="my-1" />
+          <SidebarGroup>
+            <SidebarGroupLabel>Community</SidebarGroupLabel>
+              {communityItems.map((item) => (
+                <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+          </SidebarGroup>
+            <SidebarSeparator className="my-1" />
+          <SidebarGroup>
+            <SidebarGroupLabel>Resources</SidebarGroupLabel>
+              {resourcesItems.map((item) => (
+                <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+          </SidebarGroup>
+            <SidebarSeparator className="my-1" />
               <SidebarGroup>
-                {mainMenuItems.map((item) => (
-                    <SidebarMenuItem key={item.href}>
-                    <Link href={item.href}>
-                        <SidebarMenuButton
-                        isActive={pathname === item.href}
-                        tooltip={{ children: item.label, side: "right" }}
-                        >
-                        {item.icon}
-                        <span>{item.label}</span>
-                        </SidebarMenuButton>
-                    </Link>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarGroup>
-              <SidebarSeparator className="my-1" />
-              <SidebarGroup>
-                <SidebarGroupLabel>Growth Tools</SidebarGroupLabel>
-                 {growthToolsItems.map((item) => (
-                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
-                    <Link href={item.href}>
-                        <SidebarMenuButton
-                        isActive={pathname === item.href}
-                        tooltip={{ children: item.label, side: "right" }}
-                        >
-                        {item.icon}
-                        <span>{item.label}</span>
-                        </SidebarMenuButton>
-                    </Link>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarGroup>
-              <SidebarSeparator className="my-1" />
-              <SidebarGroup>
-                <SidebarGroupLabel>Community</SidebarGroupLabel>
-                 {communityItems.map((item) => (
-                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
-                    <Link href={item.href}>
-                        <SidebarMenuButton
-                        isActive={pathname === item.href}
-                        tooltip={{ children: item.label, side: "right" }}
-                        >
-                        {item.icon}
-                        <span>{item.label}</span>
-                        </SidebarMenuButton>
-                    </Link>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarGroup>
-               <SidebarSeparator className="my-1" />
-              <SidebarGroup>
-                <SidebarGroupLabel>Resources</SidebarGroupLabel>
-                 {resourcesItems.map((item) => (
-                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
-                    <Link href={item.href}>
-                        <SidebarMenuButton
-                        isActive={pathname === item.href}
-                        tooltip={{ children: item.label, side: "right" }}
-                        >
-                        {item.icon}
-                        <span>{item.label}</span>
-                        </SidebarMenuButton>
-                    </Link>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarGroup>
-                <SidebarSeparator className="my-1" />
-                 <SidebarGroup>
-                <SidebarGroupLabel>Partnership</SidebarGroupLabel>
-                 {partnerItems.map((item) => (
-                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
-                    <Link href={item.href}>
-                        <SidebarMenuButton
-                        isActive={pathname === item.href}
-                        tooltip={{ children: item.label, side: "right" }}
-                        >
-                        {item.icon}
-                        <span>{item.label}</span>
-                        </SidebarMenuButton>
-                    </Link>
-                    </SidebarMenuItem>
-                ))}
-              </SidebarGroup>
-            </SidebarMenu>
-             <div className="p-2">
-                <Card className="bg-gradient-to-br from-primary/20 to-transparent border-primary/40 text-center">
-                    <CardHeader className="p-4">
-                        <CardTitle>Get Involved</CardTitle>
-                        <CardDescription className="text-foreground/80">
-                            Join us in prayer or support our mission financially.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-0 flex gap-2">
-                        <Button size="sm" className="w-full bg-primary/80 hover:bg-primary" asChild>
-                          <Link href="/partners-corner">
-                            <Heart className="mr-2 h-4 w-4"/>
-                            Give
-                          </Link>
-                        </Button>
-                        <Button size="sm" variant="outline" className="w-full" asChild>
-                           <Link href="/prayer-network">
-                           <Users className="mr-2 h-4 w-4"/>
-                            Pray
-                           </Link>
-                        </Button>
-                    </CardContent>
-                </Card>
-             </div>
-        </div>
+            <SidebarGroupLabel>Partnership</SidebarGroupLabel>
+              {partnerItems.map((item) => (
+                <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+          </SidebarGroup>
+        </SidebarMenu>
+          <div className="p-2">
+            <Card className="bg-primary/10 border-primary/20 text-center">
+                <CardHeader className="p-4">
+                    <CardTitle>Get Involved</CardTitle>
+                    <CardDescription className="text-foreground/80">
+                        Join us in prayer or support our mission financially.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="p-4 pt-0 flex gap-2">
+                    <Button size="sm" className="w-full" asChild>
+                      <Link href="/partners-corner">
+                        <Heart className="mr-2 h-4 w-4"/>
+                        Give
+                      </Link>
+                    </Button>
+                    <Button size="sm" variant="outline" className="w-full" asChild>
+                        <Link href="/prayer-network">
+                        <Users className="mr-2 h-4 w-4"/>
+                        Pray
+                        </Link>
+                    </Button>
+                </CardContent>
+            </Card>
+          </div>
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarSeparator />

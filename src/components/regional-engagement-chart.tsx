@@ -19,13 +19,13 @@ import { regionalData } from "@/lib/data"
 const chartConfig = {
   events: {
     label: "Events",
-    color: "hsl(var(--primary))",
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
 export function RegionalEngagementChart() {
   return (
-    <Card className="bg-gradient-to-br from-card to-muted/40 dark:from-card dark:to-secondary/30 shadow-lg">
+    <Card>
       <CardHeader>
         <CardTitle>Regional Engagement</CardTitle>
         <CardDescription>Activities per county - Last 30 days</CardDescription>
@@ -45,12 +45,12 @@ export function RegionalEngagementChart() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent 
-                className="bg-background/80 backdrop-blur-sm"
+                className="bg-background/95 backdrop-blur-sm"
               />}
             />
             <Bar
               dataKey="events"
-              fill="hsl(var(--primary))"
+              fill="var(--color-events)"
               radius={8}
             />
           </BarChart>

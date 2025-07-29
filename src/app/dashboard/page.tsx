@@ -32,7 +32,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-       <Card className="bg-transparent border shadow-sm">
+       <Card>
         <CardHeader>
           <CardTitle>Recent Activities</CardTitle>
           <CardDescription>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
                   <TableCell>{activity.county}</TableCell>
                   <TableCell>
                     <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}
-                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30'}
+                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400'}
                     >
                       {activity.status}
                     </Badge>
