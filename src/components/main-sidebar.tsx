@@ -50,12 +50,12 @@ export function MainSidebar() {
 
   const resourcesItems = [
      {
-      href: "#",
+      href: "/discipleship-resources",
       label: "Discipleship Resources",
       icon: <BookOpen />,
     },
      {
-      href: "#",
+      href: "/prayer-network",
       label: "Prayer Network",
       icon: <Users />,
     },
