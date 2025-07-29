@@ -116,10 +116,10 @@ export default function PartnersCornerPage() {
                     Your financial partnership is vital for advancing the Gospel. Choose a way to give that works for you.
                 </p>
                 <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white shadow-md">
+                     <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-colors duration-300">
                        <PiggyBank className="mr-2 h-5 w-5"/> One-Time Gift
                     </Button>
-                    <Button size="lg" variant="outline" className="bg-white/50">
+                    <Button size="lg" variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-colors duration-300">
                        <Handshake className="mr-2 h-5 w-5"/> Monthly Partner
                     </Button>
                 </div>
