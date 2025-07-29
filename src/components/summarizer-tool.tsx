@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -33,10 +34,17 @@ export function SummarizerTool() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Field Notes AI Summarizer</CardTitle>
-        <CardDescription>
-          Paste your activity notes below. Our AI will summarize them and translate to a local language for easier understanding.
-        </CardDescription>
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+            <Bot className="h-6 w-6 text-primary" />
+          </div>
+          <div>
+            <CardTitle>Field Notes AI Summarizer</CardTitle>
+            <CardDescription>
+              Paste your activity notes below to get a quick summary and translation.
+            </CardDescription>
+          </div>
+        </div>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid w-full gap-2">
@@ -45,6 +53,7 @@ export function SummarizerTool() {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             rows={8}
+            className="bg-muted/50"
           />
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
@@ -76,17 +85,17 @@ export function SummarizerTool() {
             </div>
         </div>
       </CardContent>
-      <CardFooter>
-        {summary && (
-            <Alert>
-                <Bot className="h-4 w-4" />
-                <AlertTitle>AI Generated Summary</AlertTitle>
-                <AlertDescription className="prose prose-sm dark:prose-invert max-w-none">
+      {summary && (
+        <CardFooter>
+            <Alert className="border-primary/50 bg-primary/5 text-primary-foreground">
+                <Bot className="h-5 w-5 text-primary" />
+                <AlertTitle className="text-primary">AI Generated Summary</AlertTitle>
+                <AlertDescription className="prose prose-sm max-w-none text-foreground">
                     {summary}
                 </AlertDescription>
             </Alert>
-        )}
-      </CardFooter>
+        </CardFooter>
+      )}
     </Card>
   );
 }

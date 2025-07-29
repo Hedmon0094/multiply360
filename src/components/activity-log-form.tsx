@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +26,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { kenyanCounties, lmkRegions } from "@/lib/data";
-import { Upload, Mic, FileText } from "lucide-react";
+import { Upload, Mic, FileText, Camera } from "lucide-react";
 
 const activityFormSchema = z.object({
   eventType: z.string({
@@ -155,7 +156,7 @@ export function ActivityLogForm() {
                   <FormItem>
                     <FormLabel>Attendance</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="0" {...field} />
+                      <Input type="number" placeholder="0" {...field} onChange={e => field.onChange(e.target.value === '' ? '' : Number(e.target.value))}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -189,10 +190,16 @@ export function ActivityLogForm() {
                     <FormItem>
                         <FormLabel>Upload Photo (Optional)</FormLabel>
                         <FormControl>
-                        <div className="relative">
-                            <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input type="file" accept="image/*" className="pl-10" onChange={(e) => field.onChange(e.target.files)} />
-                        </div>
+                            <div className="flex items-center justify-center w-full">
+                                <label htmlFor="photo-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/70">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <Camera className="w-8 h-8 mb-2 text-muted-foreground" />
+                                        <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                        <p className="text-xs text-muted-foreground">PNG, JPG or GIF (MAX. 800x400px)</p>
+                                    </div>
+                                    <Input id="photo-upload" type="file" accept="image/*" className="hidden" onChange={(e) => field.onChange(e.target.files)} />
+                                </label>
+                            </div> 
                         </FormControl>
                         <FormDescription>
                         A picture from the event for verification.
@@ -207,11 +214,17 @@ export function ActivityLogForm() {
                     render={({ field }) => (
                     <FormItem>
                         <FormLabel>Upload Voice Note (Optional)</FormLabel>
-                        <FormControl>
-                            <div className="relative">
-                                <Mic className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                <Input type="file" accept="audio/*" className="pl-10" onChange={(e) => field.onChange(e.target.files)} />
-                            </div>
+                         <FormControl>
+                            <div className="flex items-center justify-center w-full">
+                                <label htmlFor="voice-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/70">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <Mic className="w-8 h-8 mb-2 text-muted-foreground" />
+                                        <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                        <p className="text-xs text-muted-foreground">MP3, WAV or M4A (MAX. 5MB)</p>
+                                    </div>
+                                    <Input id="voice-upload" type="file" accept="audio/*" className="hidden" onChange={(e) => field.onChange(e.target.files)} />
+                                </label>
+                            </div> 
                         </FormControl>
                         <FormDescription>
                         A voice recording for those with low literacy.
