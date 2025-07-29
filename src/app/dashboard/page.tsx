@@ -32,7 +32,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-       <Card>
+       <Card className="bg-transparent border shadow-sm">
         <CardHeader>
           <CardTitle>Recent Activities</CardTitle>
           <CardDescription>
