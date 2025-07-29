@@ -44,6 +44,10 @@ const activityFormSchema = z.object({
 type ActivityFormValues = z.infer<typeof activityFormSchema>;
 
 const defaultValues: Partial<ActivityFormValues> = {
+  eventType: "",
+  location: "",
+  attendance: 0,
+  notes: "",
   followUpRequired: false,
 };
 
@@ -160,7 +164,7 @@ export function ActivityLogForm() {
                         <FormControl>
                         <div className="relative">
                             <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input type="file" accept="image/*" className="pl-10" {...field} />
+                            <Input type="file" accept="image/*" className="pl-10" {...field} value={field.value?.fileName} />
                         </div>
                         </FormControl>
                         <FormDescription>
@@ -179,7 +183,7 @@ export function ActivityLogForm() {
                         <FormControl>
                             <div className="relative">
                                 <Mic className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                <Input type="file" accept="audio/*" className="pl-10" {...field} />
+                                <Input type="file" accept="audio/*" className="pl-10" {...field} value={field.value?.fileName} />
                             </div>
                         </FormControl>
                         <FormDescription>
