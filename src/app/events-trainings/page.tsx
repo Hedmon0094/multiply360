@@ -10,7 +10,7 @@ import { lmkRegions } from "@/lib/data";
 const upcomingEvents = [
   {
     title: "Nairobi Region Campus Outreach",
-    date: "Saturday, August 16, 2024",
+    date: "Saturday, September 14, 2024",
     time: "10:00 AM - 2:00 PM",
     location: "University of Nairobi",
     type: "Evangelism",
@@ -19,7 +19,7 @@ const upcomingEvents = [
   },
   {
     title: "Digital Discipleship 101 Training",
-    date: "Tuesday, August 19, 2024",
+    date: "Tuesday, September 17, 2024",
     time: "7:00 PM - 8:30 PM",
     location: "Online via Zoom",
     type: "Training",
@@ -28,7 +28,7 @@ const upcomingEvents = [
   },
   {
     title: "Prayer Walk for Nakuru County",
-    date: "Friday, August 22, 2024",
+    date: "Friday, September 20, 2024",
     time: "6:00 AM - 7:00 AM",
     location: "Nakuru CBD",
     type: "Prayer",
