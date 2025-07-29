@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 import { LayoutClientProvider } from "@/components/layout-client-provider";
 
 const ptSans = PT_Sans({
@@ -24,7 +23,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${ptSans.variable} font-sans antialiased`}>
         <LayoutClientProvider>{children}</LayoutClientProvider>
-        <Toaster />
       </body>
     </html>
   );

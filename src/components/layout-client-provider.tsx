@@ -10,6 +10,7 @@ import {
 import { MainSidebar } from "@/components/main-sidebar";
 import { Header } from "@/components/header";
 import { useEffect, useState } from "react";
+import { Toaster } from "./ui/toaster";
 
 function ClientOnly({ children }: { children: React.ReactNode }) {
   const [hasMounted, setHasMounted] = useState(false);
@@ -56,6 +57,7 @@ export function LayoutClientProvider({
                 </main>
             </SidebarInset>
         </SidebarProvider>
+        <Toaster />
     </ClientOnly>
   );
 }
