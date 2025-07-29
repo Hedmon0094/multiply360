@@ -19,7 +19,7 @@ import { regionalData } from "@/lib/data"
 const chartConfig = {
   events: {
     label: "Events",
-    color: "hsl(var(--accent))",
+    color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig
 
@@ -28,11 +28,11 @@ export function RegionalEngagementChart() {
     <Card>
       <CardHeader>
         <CardTitle>Regional Engagement</CardTitle>
-        <CardDescription>Activity levels across key counties - Last 30 days</CardDescription>
+        <CardDescription>Activities per county - Last 30 days</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[300px] w-full">
-          <BarChart accessibilityLayer data={regionalData}>
+        <ChartContainer config={chartConfig} className="h-[200px] w-full">
+          <BarChart accessibilityLayer data={regionalData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="county"
@@ -41,7 +41,7 @@ export function RegionalEngagementChart() {
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <YAxis />
+            <YAxis tickLine={false} axisLine={false} />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent />}

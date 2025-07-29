@@ -1,6 +1,7 @@
 import { DashboardStats } from "@/components/dashboard-stats";
 import { LeadershipPipeline } from "@/components/leadership-pipeline";
 import { RegionalEngagementChart } from "@/components/regional-engagement-chart";
+import { VerseOfTheDay } from "@/components/verse-of-the-day";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
@@ -22,10 +23,13 @@ export default function DashboardPage() {
       </div>
       <DashboardStats />
       <div className="grid gap-8 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 grid gap-8">
             <LeadershipPipeline />
         </div>
-        <RegionalEngagementChart />
+        <div className="grid gap-8">
+            <VerseOfTheDay />
+            <RegionalEngagementChart />
+        </div>
       </div>
 
        <Card>

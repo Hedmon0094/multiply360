@@ -1,36 +1,32 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight, Target, ShieldCheck, Send } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 
 export function LeadershipPipeline() {
   const pipelineStages = [
-    { name: "Win", count: 328, icon: <Target className="h-8 w-8 text-accent" />, description: "Initial outreach & evangelism" },
-    { name: "Build", count: 112, icon: <ShieldCheck className="h-8 w-8 text-accent" />, description: "Discipleship & growth" },
-    { name: "Send", count: 45, icon: <Send className="h-8 w-8 text-accent" />, description: "Multiplying leaders" },
+    { name: "Win", count: 328, goal: 500, color: "bg-sky-500" },
+    { name: "Build", count: 112, goal: 200, color: "bg-amber-500" },
+    { name: "Send", count: 45, goal: 100, color: "bg-emerald-500" },
   ];
 
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
-        <CardTitle>Leadership Pipeline</CardTitle>
+        <CardTitle>Discipleship Journey</CardTitle>
+        <CardDescription>Progress in the Win-Build-Send strategy.</CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-          {pipelineStages.map((stage, index) => (
-            <div key={stage.name} className="flex items-center gap-4">
-              <Card className="flex-1 bg-secondary/50 border-dashed">
-                <CardContent className="p-4 flex flex-col items-center text-center">
-                  {stage.icon}
-                  <h3 className="text-lg font-semibold mt-2">{stage.name}</h3>
-                  <p className="text-3xl font-bold">{stage.count}</p>
-                  <p className="text-xs text-muted-foreground">{stage.description}</p>
-                </CardContent>
-              </Card>
-              {index < pipelineStages.length - 1 && (
-                 <ChevronRight className="h-8 w-8 text-muted-foreground hidden md:block" />
-              )}
+      <CardContent className="space-y-6">
+        {pipelineStages.map((stage) => {
+          const progress = (stage.count / stage.goal) * 100;
+          return (
+            <div key={stage.name}>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-sm font-medium text-foreground">{stage.name}</span>
+                <span className="text-sm font-medium text-muted-foreground">{stage.count} / {stage.goal}</span>
+              </div>
+              <Progress value={progress} className="h-3 [&>div]:bg-primary" />
             </div>
-          ))}
-        </div>
+          );
+        })}
       </CardContent>
     </Card>
   );

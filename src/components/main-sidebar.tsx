@@ -54,22 +54,24 @@ export function MainSidebar() {
       <SidebarHeader>
         <Logo />
       </SidebarHeader>
-      <SidebarContent className="p-2">
-        <SidebarMenu>
-          {menuItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
-              <Link href={item.href}>
-                <SidebarMenuButton
-                  isActive={pathname === item.href}
-                  tooltip={{ children: item.label, side: "right" }}
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
+      <SidebarContent className="p-2 bg-[url('/sidebar-bg.png')] bg-cover bg-center">
+        <div className="bg-sidebar/80 backdrop-blur-sm rounded-lg h-full">
+            <SidebarMenu>
+            {menuItems.map((item) => (
+                <SidebarMenuItem key={item.href}>
+                <Link href={item.href}>
+                    <SidebarMenuButton
+                    isActive={pathname === item.href}
+                    tooltip={{ children: item.label, side: "right" }}
+                    >
+                    {item.icon}
+                    <span>{item.label}</span>
+                    </SidebarMenuButton>
+                </Link>
+                </SidebarMenuItem>
+            ))}
+            </SidebarMenu>
+        </div>
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarSeparator />
