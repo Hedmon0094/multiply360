@@ -30,6 +30,7 @@ import {
   Languages,
   Briefcase,
   Flame,
+  Info,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -48,6 +49,11 @@ export function MainSidebar() {
       href: "/log-activity",
       label: "Log Activity",
       icon: <FileText />,
+    },
+    {
+      href: "/about",
+      label: "About",
+      icon: <Info />,
     },
   ];
 
