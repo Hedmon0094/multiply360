@@ -34,10 +34,10 @@ const personalGoals = [
 ];
 
 const groupChallengeParticipants = [
-    { rank: 1, name: "Mary Wanjiru", region: "Central Region", progress: 92, avatar: "https://placehold.co/40x40.png" },
-    { rank: 2, name: "David Koech", region: "South Rift", progress: 85, avatar: "https://placehold.co/40x40.png" },
+    { rank: 1, name: "Mary Wanjiru", region: "Central", progress: 92, avatar: "https://placehold.co/40x40.png" },
+    { rank: 2, name: "David Koech", region: "S. Rift", progress: 85, avatar: "https://placehold.co/40x40.png" },
     { rank: 3, name: "John Omondi", region: "Nairobi", progress: 78, avatar: "https://placehold.co/40x40.png" },
-    { rank: 4, name: "Grace Akinyi", region: "Coast Region", progress: 75, avatar: "https://placehold.co/40x40.png" },
+    { rank: 4, name: "Grace Akinyi", region: "Coast", progress: 75, avatar: "https://placehold.co/40x40.png" },
 ];
 
 
@@ -51,7 +51,7 @@ export default function MissionTrackerPage() {
             Set goals, track your progress, and celebrate your impact.
             </p>
         </div>
-        <Button size="lg">
+        <Button size="lg" className="w-full sm:w-auto">
             <PlusCircle className="mr-2 h-5 w-5" />
             Set a New Goal
         </Button>
@@ -73,8 +73,8 @@ export default function MissionTrackerPage() {
                     const progressValue = (goal.current / goal.goal) * 100;
                     return (
                         <div key={goal.title} className="p-4 rounded-lg border bg-muted/50">
-                            <div className="flex items-center gap-4">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-background shadow-inner">
+                            <div className="flex items-start gap-4">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-background shadow-inner shrink-0">
                                     {goal.icon}
                                 </div>
                                 <div className="flex-1">
@@ -111,7 +111,7 @@ export default function MissionTrackerPage() {
                         <TableRow>
                         <TableHead>Rank</TableHead>
                         <TableHead>Leader</TableHead>
-                        <TableHead>Region</TableHead>
+                        <TableHead className="hidden sm:table-cell">Region</TableHead>
                         <TableHead className="text-right">Progress</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -125,10 +125,13 @@ export default function MissionTrackerPage() {
                                         <AvatarImage src={p.avatar} alt={p.name} data-ai-hint="user avatar" />
                                         <AvatarFallback>{p.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
-                                    <span className="font-medium">{p.name}</span>
+                                    <div className="flex flex-col sm:flex-row sm:items-center">
+                                        <span className="font-medium">{p.name}</span>
+                                        <span className="sm:hidden text-xs text-muted-foreground">{p.region}</span>
+                                    </div>
                                 </div>
                             </TableCell>
-                            <TableCell>{p.region}</TableCell>
+                            <TableCell className="hidden sm:table-cell">{p.region}</TableCell>
                             <TableCell className="text-right font-semibold">{p.progress}%</TableCell>
                         </TableRow>
                         ))}

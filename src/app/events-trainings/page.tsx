@@ -49,7 +49,7 @@ export default function EventsTrainingsPage() {
             Find upcoming events, register for trainings, and watch past sessions.
             </p>
         </div>
-         <Button size="lg">
+         <Button size="lg" className="w-full md:w-auto">
             <PlusCircle className="mr-2 h-5 w-5" />
             Create an Event
         </Button>
@@ -101,7 +101,7 @@ export default function EventsTrainingsPage() {
                                 <div className="flex-1">
                                     <Badge variant="secondary" className="mb-2">{event.type}</Badge>
                                     <CardTitle>{event.title}</CardTitle>
-                                    <CardDescription className="flex items-center gap-4 mt-2">
+                                    <CardDescription className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mt-2">
                                         <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {event.date}</span>
                                         <span className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {event.location}</span>
                                     </CardDescription>
@@ -121,7 +121,7 @@ export default function EventsTrainingsPage() {
             <Card>
                 <CardContent className="p-0">
                     <div className="flex items-center justify-center h-96 rounded-lg bg-muted/50 border border-dashed">
-                        <div className="text-center text-muted-foreground">
+                        <div className="text-center text-muted-foreground p-4">
                             <Calendar className="h-10 w-10 mx-auto mb-4 text-primary" />
                             <p className="font-semibold">Interactive Calendar Coming Soon</p>
                             <p className="text-sm">A full calendar view of all events will be available here.</p>

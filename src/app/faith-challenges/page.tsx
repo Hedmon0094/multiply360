@@ -38,7 +38,7 @@ export default function FaithChallengesPage() {
             Join campaigns that will stretch your faith and multiply your impact.
           </p>
         </div>
-         <Button size="lg">
+         <Button size="lg" className="w-full sm:w-auto">
             <PlusCircle className="mr-2 h-5 w-5" />
             Join a Challenge
         </Button>
@@ -53,15 +53,17 @@ export default function FaithChallengesPage() {
             <CardContent className="space-y-6">
                 {activeChallenges.map(challenge => (
                     <div key={challenge.title} className="p-4 rounded-xl border bg-background/80 shadow-inner">
-                        <div className="flex items-start gap-4">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted shadow-inner">
-                                {challenge.icon}
+                        <div className="flex flex-col sm:flex-row items-start gap-4">
+                            <div className="flex items-start gap-4 w-full">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted shadow-inner shrink-0">
+                                    {challenge.icon}
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="font-semibold">{challenge.title}</h3>
+                                    <p className="text-sm text-muted-foreground">{challenge.description}</p>
+                                </div>
                             </div>
-                            <div className="flex-1">
-                                <h3 className="font-semibold">{challenge.title}</h3>
-                                <p className="text-sm text-muted-foreground">{challenge.description}</p>
-                            </div>
-                             <Button variant="outline" size="sm">
+                             <Button variant="outline" size="sm" className="w-full sm:w-auto mt-2 sm:mt-0">
                                 <CheckSquare className="mr-2 h-4 w-4 text-accent"/> Check In
                             </Button>
                         </div>
@@ -86,7 +88,7 @@ export default function FaithChallengesPage() {
                              <Trophy className="mr-2 h-5 w-5 text-amber-600 dark:text-amber-400" /> {badge}
                         </Badge>
                     ))}
-                     <div className="flex items-center justify-center h-16 w-full rounded-lg bg-muted/50 border-2 border-dashed mt-2">
+                     <div className="flex items-center justify-center h-16 w-full rounded-lg bg-muted/50 border-2 border-dashed mt-2 p-2 text-center">
                         <p className="text-muted-foreground text-sm">More badges will appear here as you complete challenges!</p>
                      </div>
                 </div>

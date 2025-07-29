@@ -22,7 +22,7 @@ const praiseReports = [
 
 export default function PrayerNetworkPage() {
   return (
-    <div className="flex flex-col gap-8 bg-purple-50/50 dark:bg-purple-900/10 -m-8 p-8">
+    <div className="flex flex-col gap-8 bg-purple-50/50 dark:bg-purple-900/10 -m-4 sm:-m-6 md:-m-8 p-4 sm:p-6 md:p-8">
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight">Prayer Network</h1>
         <p className="text-muted-foreground mt-2">

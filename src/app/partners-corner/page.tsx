@@ -49,7 +49,7 @@ export default function PartnersCornerPage() {
   };
 
   return (
-    <div className="flex flex-col gap-12 bg-amber-50/30 dark:bg-amber-900/10 -m-8 p-8">
+    <div className="flex flex-col gap-12 bg-amber-50/30 dark:bg-amber-900/10 -m-4 sm:-m-6 md:-m-8 p-4 sm:p-6 md:p-8">
       <div className="text-center max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold tracking-tight text-amber-800 dark:text-amber-200">Partner's Corner</h1>
         <p className="text-lg mt-2 text-muted-foreground">
@@ -121,9 +121,9 @@ export default function PartnersCornerPage() {
 
       {/* Give & Grow Section */}
        <div className="text-center">
-            <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl inline-block text-left">
+            <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl inline-block text-left max-w-4xl w-full">
                 <div className="grid md:grid-cols-2">
-                    <div className="p-8 space-y-4">
+                    <div className="p-6 md:p-8 space-y-4">
                         <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100">Give & Grow</h2>
                         <p className="text-muted-foreground">
                             Your financial partnership is vital for advancing the Gospel. Choose a way to give below.
@@ -137,7 +137,7 @@ export default function PartnersCornerPage() {
                             </Button>
                         </div>
                     </div>
-                    <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50">
+                    <div className="p-6 md:p-8 md:border-l border-t md:border-t-0 border-amber-300/50">
                         <h3 className="text-xl font-semibold">Partner Resources</h3>
                         <p className="text-muted-foreground mt-1">Access exclusive reports and updates.</p>
                         <div className="mt-4 space-y-3">

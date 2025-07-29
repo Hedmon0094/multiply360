@@ -58,15 +58,15 @@ export default function SettingsPage() {
                     <CardDescription>Choose how you want to be notified.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="flex items-center justify-between p-4 rounded-lg border">
-                        <div>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg border">
+                        <div className="mb-2 sm:mb-0">
                             <Label htmlFor="email-notifications">Email Notifications</Label>
                             <p className="text-sm text-muted-foreground">Receive updates via email.</p>
                         </div>
                         <Switch id="email-notifications" defaultChecked />
                     </div>
-                     <div className="flex items-center justify-between p-4 rounded-lg border">
-                        <div>
+                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg border">
+                        <div className="mb-2 sm:mb-0">
                             <Label htmlFor="push-notifications">Push Notifications</Label>
                             <p className="text-sm text-muted-foreground">Get alerts on your device.</p>
                         </div>
@@ -81,8 +81,8 @@ export default function SettingsPage() {
                     <CardDescription>Customize the look and feel of the app.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                   <div className="flex items-center justify-between p-4 rounded-lg border">
-                        <div>
+                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg border">
+                        <div className="mb-2 sm:mb-0">
                             <Label htmlFor="dark-mode">Dark Mode</Label>
                             <p className="text-sm text-muted-foreground">Enable for better viewing at night.</p>
                         </div>

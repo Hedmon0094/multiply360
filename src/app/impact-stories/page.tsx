@@ -15,7 +15,7 @@ const stories = [
     mediaUrl: "https://placehold.co/600x400.png",
     submittedBy: "Campus Staff, Nairobi",
     likes: 142,
-    date: "2024-08-15",
+    date: "2024-09-15",
     dataAiHint: "student group",
   },
   {
@@ -27,7 +27,7 @@ const stories = [
     mediaUrl: "https://placehold.co/600x400.png",
     submittedBy: "JESUS Film Team",
     likes: 289,
-    date: "2024-08-12",
+    date: "2024-09-12",
     dataAiHint: "village outdoors",
   },
   {
@@ -39,7 +39,7 @@ const stories = [
     mediaUrl: "https://placehold.co/600x400.png",
     submittedBy: "Digital Strategies Team",
     likes: 95,
-    date: "2024-08-09",
+    date: "2024-09-09",
     dataAiHint: "person phone",
   },
    {
@@ -51,7 +51,7 @@ const stories = [
     mediaUrl: "https://placehold.co/600x400.png",
     submittedBy: "Field Staff, Nakuru",
     likes: 112,
-    date: "2024-08-05",
+    date: "2024-09-05",
     dataAiHint: "people praying",
   },
 ];
