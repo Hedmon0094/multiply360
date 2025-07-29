@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Users, Target, Briefcase, Languages, ShieldCheck, Heart, MessageSquare, Award } from "lucide-react";
+import { Users, Target, Briefcase, Languages, ShieldCheck, Heart, MessageSquare, Award, Flame } from "lucide-react";
 
 export default function AboutPage() {
   const features = [
