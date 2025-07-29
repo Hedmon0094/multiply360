@@ -21,7 +21,7 @@ import {
   BookOpen,
   Users,
   Heart,
-  BadgeHelp,
+  Sparkles,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -59,6 +59,11 @@ export function MainSidebar() {
       label: "Prayer Network",
       icon: <Users />,
     },
+    {
+        href: "/impact-stories",
+        label: "Impact Stories",
+        icon: <Sparkles />,
+    }
   ]
 
   return (
