@@ -40,6 +40,7 @@ export function LayoutClientProvider({
     return (
       <main className="flex min-h-screen items-center justify-center bg-background">
         {children}
+        <Toaster />
       </main>
     );
   }

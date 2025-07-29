@@ -1,3 +1,4 @@
+
 import { Search, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,10 +13,11 @@ import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import Image from "next/image";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function Header() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6">
+    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6 sticky top-0 z-30">
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
@@ -31,28 +33,28 @@ export function Header() {
           </div>
         </form>
       </div>
-      <Button variant="ghost" size="icon" className="rounded-full">
+      <Button variant="ghost" size="icon" className="rounded-full relative">
         <Bell className="h-5 w-5" />
+        <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
         <span className="sr-only">Toggle notifications</span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="icon" className="rounded-full">
-             <Image 
-                src="https://placehold.co/36x36.png"
-                width={36}
-                height={36}
-                alt="User avatar"
-                data-ai-hint="user avatar"
-                className="rounded-full"
-            />
+          <Button variant="ghost" size="icon" className="rounded-full">
+             <Avatar className="h-8 w-8">
+                <AvatarImage src="https://placehold.co/36x36.png" alt="User avatar" data-ai-hint="user avatar" />
+                <AvatarFallback>JO</AvatarFallback>
+            </Avatar>
             <span className="sr-only">Toggle user menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+           <DropdownMenuItem asChild><Link href="/settings">Settings</Link></DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>

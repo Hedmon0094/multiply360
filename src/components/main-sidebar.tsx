@@ -51,6 +51,11 @@ export function MainSidebar() {
       icon: <FileText />,
     },
     {
+      href: "/summarize",
+      label: "AI Summarizer",
+      icon: <Bot />,
+    },
+    {
       href: "/about",
       label: "About",
       icon: <Info />,
