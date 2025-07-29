@@ -9,6 +9,22 @@ import {
 } from "@/components/ui/sidebar";
 import { MainSidebar } from "@/components/main-sidebar";
 import { Header } from "@/components/header";
+import { useEffect, useState } from "react";
+
+function ClientOnly({ children }: { children: React.ReactNode }) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  return <>{children}</>;
+}
+
 
 export function LayoutClientProvider({
   children,
@@ -29,15 +45,17 @@ export function LayoutClientProvider({
 
   return (
     <SidebarProvider>
-      <Sidebar>
-        <MainSidebar />
-      </Sidebar>
-      <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
-        <Header />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
-            {children}
-        </main>
-      </SidebarInset>
+        <Sidebar>
+          <MainSidebar />
+        </Sidebar>
+        <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
+          <ClientOnly>
+            <Header />
+            <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
+                {children}
+            </main>
+          </ClientOnly>
+        </SidebarInset>
     </SidebarProvider>
   );
 }
