@@ -48,14 +48,14 @@ export function LayoutClientProvider({
         <Sidebar>
           <MainSidebar />
         </Sidebar>
-        <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
-          <ClientOnly>
+        <ClientOnly>
+          <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
             <Header />
             <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
                 {children}
             </main>
-          </ClientOnly>
-        </SidebarInset>
+          </SidebarInset>
+        </ClientOnly>
     </SidebarProvider>
   );
 }
