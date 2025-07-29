@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Handshake, Heart, Target, Users, Megaphone, Download, PiggyBank } from "lucide-react";
@@ -108,7 +109,7 @@ export default function PartnersCornerPage() {
 
       {/* Give & Grow Section */}
       <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="grid md:grid-cols-2">
             <div className="p-8">
                 <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100">Give & Grow</h2>
                 <p className="mt-2 text-muted-foreground">
@@ -124,24 +125,24 @@ export default function PartnersCornerPage() {
                 </div>
                  <p className="text-xs text-muted-foreground mt-4">Secure giving options coming soon.</p>
             </div>
-            <div className="p-8 border-l border-amber-300/50">
+            <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50">
                  <h3 className="text-xl font-semibold">Partner Resources</h3>
                  <p className="text-muted-foreground mt-1">Access exclusive reports and updates.</p>
                  <div className="mt-4 space-y-3">
-                    <Button variant="ghost" className="justify-start w-full text-left h-auto">
-                        <Download className="mr-3 h-4 w-4"/> 
+                    <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
+                        <Download className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
                         <div>
                             <p className="font-semibold">Annual Impact Report 2023</p>
                             <p className="text-xs text-muted-foreground">Download the full PDF report.</p>
                         </div>
-                    </Button>
-                    <Button variant="ghost" className="justify-start w-full text-left h-auto">
-                        <Megaphone className="mr-3 h-4 w-4"/> 
+                    </button>
+                    <button className="flex items-start gap-4 p-2 rounded-lg hover:bg-amber-200/50 dark:hover:bg-amber-800/40 w-full text-left transition-colors">
+                        <Megaphone className="h-5 w-5 text-amber-700 dark:text-amber-300 mt-1 shrink-0"/> 
                          <div>
                             <p className="font-semibold">A Message from the Director</p>
                             <p className="text-xs text-muted-foreground">Watch the latest video update.</p>
                         </div>
-                    </Button>
+                    </button>
                  </div>
             </div>
         </div>
