@@ -1,4 +1,5 @@
 
+"use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { Handshake, Heart, Target, Users, Megaphone, Download, PiggyBank } from 
 import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
 const impactStats = [
   { title: "New Disciples", value: "328", change: "+15% this quarter", icon: <Users className="h-6 w-6 text-emerald-500" /> },
@@ -36,6 +38,16 @@ const projects = [
 ];
 
 export default function PartnersCornerPage() {
+  const { toast } = useToast();
+
+  const handleGiveClick = (type: "one-time" | "monthly") => {
+    toast({
+      title: "Thank You for Your Heart to Give!",
+      description: `The secure portal for ${type} gifts is being set up. Please check back soon.`,
+      action: <Heart className="h-5 w-5 text-emerald-500" />,
+    });
+  };
+
   return (
     <div className="flex flex-col gap-12 bg-amber-50/30 dark:bg-amber-900/10 -m-8 p-8">
       <div className="text-center max-w-3xl mx-auto">
@@ -96,7 +108,7 @@ export default function PartnersCornerPage() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full" variant="outline">
+                            <Button className="w-full" variant="outline" onClick={() => handleGiveClick('one-time')}>
                                 <Heart className="mr-2 h-4 w-4"/>
                                 Support this Project
                             </Button>
@@ -109,15 +121,23 @@ export default function PartnersCornerPage() {
 
       {/* Give & Grow Section */}
        <div className="text-center">
-            <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl inline-block">
+            <Card className="bg-amber-100/50 dark:bg-amber-800/20 border-amber-300/50 shadow-xl inline-block text-left">
                 <div className="grid md:grid-cols-2">
-                    <div className="p-8 text-left">
+                    <div className="p-8 space-y-4">
                         <h2 className="text-3xl font-bold text-amber-900 dark:text-amber-100">Give & Grow</h2>
-                        <p className="mt-2 text-muted-foreground">
-                            Your financial partnership is vital for advancing the Gospel.
+                        <p className="text-muted-foreground">
+                            Your financial partnership is vital for advancing the Gospel. Choose a way to give below.
                         </p>
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                           <Button onClick={() => handleGiveClick('one-time')} className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-all duration-300 transform hover:scale-105 w-full">
+                                <PiggyBank className="mr-2 h-5 w-5"/> One-Time Gift
+                            </Button>
+                            <Button onClick={() => handleGiveClick('monthly')} variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-all duration-300 transform hover:scale-105 w-full">
+                                <Handshake className="mr-2 h-5 w-5"/> Monthly Partner
+                            </Button>
+                        </div>
                     </div>
-                    <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50 text-left">
+                    <div className="p-8 md:border-l border-t md:border-t-0 border-amber-300/50">
                         <h3 className="text-xl font-semibold">Partner Resources</h3>
                         <p className="text-muted-foreground mt-1">Access exclusive reports and updates.</p>
                         <div className="mt-4 space-y-3">
@@ -140,19 +160,6 @@ export default function PartnersCornerPage() {
                 </div>
             </Card>
         </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
-                <PiggyBank className="mr-2 h-5 w-5"/> One-Time Gift
-            </Button>
-            <Button size="lg" variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
-                <Handshake className="mr-2 h-5 w-5"/> Monthly Partner
-            </Button>
-        </div>
-        <p className="text-xs text-muted-foreground text-center">Secure giving options coming soon.</p>
-
-
     </div>
   );
 }
-
