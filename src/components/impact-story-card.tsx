@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Heart, MapPin, Tag, User } from "lucide-react";
+import { BookOpen, Heart, MapPin, Tag, User } from "lucide-react";
 
 type Story = {
   title: string;
@@ -53,11 +53,15 @@ export function ImpactStoryCard({ story }: { story: Story }) {
             <span>Theme: {story.theme}</span>
         </div>
       </CardContent>
-      <CardFooter className="bg-amber-100/30 dark:bg-amber-900/20 p-4 flex justify-end">
+      <CardFooter className="bg-amber-100/30 dark:bg-amber-900/20 p-4 flex justify-between items-center">
         <Button variant="outline" className="bg-white dark:bg-card">
             <Heart className="mr-2 h-4 w-4 text-rose-500"/>
             <span className="font-semibold">{story.likes}</span>
             <span className="sr-only">Likes</span>
+        </Button>
+         <Button>
+            <BookOpen className="mr-2 h-4 w-4" />
+            Read More
         </Button>
       </CardFooter>
     </Card>
