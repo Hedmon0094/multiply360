@@ -1,3 +1,4 @@
+
 import { DashboardStats } from "@/components/dashboard-stats";
 import { LeadershipPipeline } from "@/components/leadership-pipeline";
 import { RegionalEngagementChart } from "@/components/regional-engagement-chart";
@@ -44,9 +45,9 @@ export default function DashboardPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Disciple/Leader</TableHead>
-                <TableHead>Activity</TableHead>
-                <TableHead>Region</TableHead>
-                <TableHead>County</TableHead>
+                <TableHead className="hidden sm:table-cell">Activity</TableHead>
+                <TableHead className="hidden md:table-cell">Region</TableHead>
+                <TableHead className="hidden lg:table-cell">County</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>
@@ -54,12 +55,12 @@ export default function DashboardPage() {
               {recentActivities.map((activity, index) => (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{activity.disciple}</TableCell>
-                  <TableCell>{activity.activity}</TableCell>
-                  <TableCell>{activity.region}</TableCell>
-                  <TableCell>{activity.county}</TableCell>
+                  <TableCell className="hidden sm:table-cell">{activity.activity}</TableCell>
+                  <TableCell className="hidden md:table-cell">{activity.region}</TableCell>
+                  <TableCell className="hidden lg:table-cell">{activity.county}</TableCell>
                   <TableCell>
                     <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}
-                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400'}
+                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400 whitespace-nowrap' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400 whitespace-nowrap'}
                     >
                       {activity.status}
                     </Badge>
