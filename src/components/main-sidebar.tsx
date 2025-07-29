@@ -84,7 +84,7 @@ export function MainSidebar() {
               ))}
               <SidebarSeparator className="my-2" />
                {resourcesItems.map((item) => (
-                  <SidebarMenuItem key={item.href}>
+                  <SidebarMenuItem key={`${item.href}-${item.label}`}>
                   <Link href={item.href}>
                       <SidebarMenuButton
                       isActive={pathname === item.href}
