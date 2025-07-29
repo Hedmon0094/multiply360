@@ -44,18 +44,18 @@ export function LayoutClientProvider({
   }
 
   return (
-    <SidebarProvider>
-        <Sidebar>
-          <MainSidebar />
-        </Sidebar>
-        <ClientOnly>
-          <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
-            <Header />
-            <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
-                {children}
-            </main>
-          </SidebarInset>
-        </ClientOnly>
-    </SidebarProvider>
+    <ClientOnly>
+        <SidebarProvider>
+            <Sidebar>
+                <MainSidebar />
+            </Sidebar>
+            <SidebarInset className="flex flex-col bg-[url('/background-pattern.svg')] bg-cover">
+                <Header />
+                <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 bg-background/90 backdrop-blur-sm">
+                    {children}
+                </main>
+            </SidebarInset>
+        </SidebarProvider>
+    </ClientOnly>
   );
 }
