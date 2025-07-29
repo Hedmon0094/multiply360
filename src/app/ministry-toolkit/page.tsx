@@ -55,7 +55,7 @@ const resources = [
   },
 ];
 
-export default function DiscipleshipResourcesPage() {
+export default function MinistryToolkitPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>

@@ -11,6 +11,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from "@/components/ui/sidebar";
 import {
   LayoutDashboard,
@@ -22,6 +24,12 @@ import {
   Users,
   Heart,
   Sparkles,
+  Target,
+  Calendar,
+  ShieldCheck,
+  Languages,
+  Briefcase,
+  Flame,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -30,7 +38,7 @@ import { Button } from "./ui/button";
 export function MainSidebar() {
   const pathname = usePathname();
 
-  const menuItems = [
+  const mainMenuItems = [
     {
       href: "/dashboard",
       label: "Dashboard",
@@ -41,19 +49,22 @@ export function MainSidebar() {
       label: "Log Activity",
       icon: <FileText />,
     },
-    {
-      href: "/summarize",
-      label: "AI Summarizer",
-      icon: <Bot />,
+  ];
+
+  const growthToolsItems = [
+     {
+      href: "/mission-tracker",
+      label: "Mission Tracker",
+      icon: <Target />,
+    },
+     {
+      href: "/faith-challenges",
+      label: "Faith Challenges",
+      icon: <Flame />,
     },
   ];
 
-  const resourcesItems = [
-     {
-      href: "/discipleship-resources",
-      label: "Discipleship Resources",
-      icon: <BookOpen />,
-    },
+  const communityItems = [
      {
       href: "/prayer-network",
       label: "Prayer Network",
@@ -63,7 +74,33 @@ export function MainSidebar() {
         href: "/impact-stories",
         label: "Impact Stories",
         icon: <Sparkles />,
-    }
+    },
+     {
+      href: "/events-trainings",
+      label: "Events & Trainings",
+      icon: <Calendar />,
+    },
+  ];
+
+  const resourcesItems = [
+    {
+      href: "/devotional-center",
+      label: "Devotional Center",
+      icon: <BookOpen />,
+    },
+     {
+      href: "/ministry-toolkit",
+      label: "Ministry Toolkit",
+      icon: <Briefcase />,
+    },
+  ]
+
+  const partnerItems = [
+      {
+          href: "/partners-corner",
+          label: "Partner's Corner",
+          icon: <Heart />,
+      }
   ]
 
   return (
@@ -74,33 +111,72 @@ export function MainSidebar() {
       <SidebarContent className="p-2 bg-[url('/sidebar-bg.png')] bg-cover bg-center">
         <div className="bg-sidebar/80 backdrop-blur-sm rounded-lg h-full flex flex-col">
             <SidebarMenu className="flex-1">
-              {menuItems.map((item) => (
-                  <SidebarMenuItem key={item.href}>
-                  <Link href={item.href}>
-                      <SidebarMenuButton
-                      isActive={pathname === item.href}
-                      tooltip={{ children: item.label, side: "right" }}
-                      >
-                      {item.icon}
-                      <span>{item.label}</span>
-                      </SidebarMenuButton>
-                  </Link>
-                  </SidebarMenuItem>
-              ))}
-              <SidebarSeparator className="my-2" />
-               {resourcesItems.map((item) => (
-                  <SidebarMenuItem key={`${item.href}-${item.label}`}>
-                  <Link href={item.href}>
-                      <SidebarMenuButton
-                      isActive={pathname === item.href}
-                      tooltip={{ children: item.label, side: "right" }}
-                      >
-                      {item.icon}
-                      <span>{item.label}</span>
-                      </SidebarMenuButton>
-                  </Link>
-                  </SidebarMenuItem>
-              ))}
+              <SidebarGroup>
+                {mainMenuItems.map((item) => (
+                    <SidebarMenuItem key={item.href}>
+                    <Link href={item.href}>
+                        <SidebarMenuButton
+                        isActive={pathname === item.href}
+                        tooltip={{ children: item.label, side: "right" }}
+                        >
+                        {item.icon}
+                        <span>{item.label}</span>
+                        </SidebarMenuButton>
+                    </Link>
+                    </SidebarMenuItem>
+                ))}
+              </SidebarGroup>
+              <SidebarSeparator className="my-1" />
+              <SidebarGroup>
+                <SidebarGroupLabel>Growth Tools</SidebarGroupLabel>
+                 {growthToolsItems.map((item) => (
+                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                    <Link href={item.href}>
+                        <SidebarMenuButton
+                        isActive={pathname === item.href}
+                        tooltip={{ children: item.label, side: "right" }}
+                        >
+                        {item.icon}
+                        <span>{item.label}</span>
+                        </SidebarMenuButton>
+                    </Link>
+                    </SidebarMenuItem>
+                ))}
+              </SidebarGroup>
+              <SidebarSeparator className="my-1" />
+              <SidebarGroup>
+                <SidebarGroupLabel>Community</SidebarGroupLabel>
+                 {communityItems.map((item) => (
+                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                    <Link href={item.href}>
+                        <SidebarMenuButton
+                        isActive={pathname === item.href}
+                        tooltip={{ children: item.label, side: "right" }}
+                        >
+                        {item.icon}
+                        <span>{item.label}</span>
+                        </SidebarMenuButton>
+                    </Link>
+                    </SidebarMenuItem>
+                ))}
+              </SidebarGroup>
+               <SidebarSeparator className="my-1" />
+              <SidebarGroup>
+                <SidebarGroupLabel>Resources</SidebarGroupLabel>
+                 {resourcesItems.map((item) => (
+                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                    <Link href={item.href}>
+                        <SidebarMenuButton
+                        isActive={pathname === item.href}
+                        tooltip={{ children: item.label, side: "right" }}
+                        >
+                        {item.icon}
+                        <span>{item.label}</span>
+                        </SidebarMenuButton>
+                    </Link>
+                    </SidebarMenuItem>
+                ))}
+              </SidebarGroup>
             </SidebarMenu>
              <div className="p-2">
                 <Card className="bg-gradient-to-br from-primary/20 to-transparent border-primary/40 text-center">
@@ -111,13 +187,17 @@ export function MainSidebar() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="p-4 pt-0 flex gap-2">
-                        <Button size="sm" className="w-full bg-primary/80 hover:bg-primary">
+                        <Button size="sm" className="w-full bg-primary/80 hover:bg-primary" asChild>
+                          <Link href="/partners-corner">
                             <Heart className="mr-2 h-4 w-4"/>
                             Give
+                          </Link>
                         </Button>
-                        <Button size="sm" variant="outline" className="w-full">
+                        <Button size="sm" variant="outline" className="w-full" asChild>
+                           <Link href="/prayer-network">
                            <Users className="mr-2 h-4 w-4"/>
                             Pray
+                           </Link>
                         </Button>
                     </CardContent>
                 </Card>
