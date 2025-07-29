@@ -182,6 +182,23 @@ export function MainSidebar() {
                     </SidebarMenuItem>
                 ))}
               </SidebarGroup>
+                <SidebarSeparator className="my-1" />
+                 <SidebarGroup>
+                <SidebarGroupLabel>Partnership</SidebarGroupLabel>
+                 {partnerItems.map((item) => (
+                    <SidebarMenuItem key={`${item.href}-${item.label}`}>
+                    <Link href={item.href}>
+                        <SidebarMenuButton
+                        isActive={pathname === item.href}
+                        tooltip={{ children: item.label, side: "right" }}
+                        >
+                        {item.icon}
+                        <span>{item.label}</span>
+                        </SidebarMenuButton>
+                    </Link>
+                    </SidebarMenuItem>
+                ))}
+              </SidebarGroup>
             </SidebarMenu>
              <div className="p-2">
                 <Card className="bg-gradient-to-br from-primary/20 to-transparent border-primary/40 text-center">
