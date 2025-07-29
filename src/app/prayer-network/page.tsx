@@ -31,28 +31,28 @@ export default function PrayerNetworkPage() {
       </div>
 
       <Tabs defaultValue="points" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
           <TabsTrigger value="points">Prayer Points</TabsTrigger>
           <TabsTrigger value="praise">Praise Wall</TabsTrigger>
           <TabsTrigger value="submit">Submit a Prayer</TabsTrigger>
         </TabsList>
         
         <TabsContent value="points">
-            <Card>
+            <Card className="bg-transparent shadow-none border-none">
                 <CardHeader>
                     <CardTitle>This Week's Prayer Focus</CardTitle>
                     <CardDescription>Join the LMK community in focused prayer. Click "I Prayed" to let us know you're standing with us.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                 {prayerPoints.map(point => (
-                     <div key={point.id} className="rounded-lg border p-4 flex items-start justify-between">
-                        <div>
-                            <Badge className="mb-2">{point.category}</Badge>
+                     <div key={point.id} className="rounded-lg border bg-card p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="flex-grow">
+                            <Badge variant="secondary" className="mb-2">{point.category}</Badge>
                             <h3 className="font-semibold">{point.title}</h3>
-                            <p className="text-sm text-muted-foreground">{point.text}</p>
+                            <p className="text-sm text-muted-foreground mt-1">{point.text}</p>
                         </div>
-                        <Button variant="outline" className="flex items-center gap-2 shrink-0">
-                            <Heart className="h-4 w-4 text-rose-500" /> 
+                        <Button variant="outline" className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                            <Heart className="h-4 w-4 text-rose-500 transition-transform group-hover:scale-110" /> 
                             <span>I Prayed ({point.count})</span>
                         </Button>
                     </div>
@@ -62,16 +62,16 @@ export default function PrayerNetworkPage() {
         </TabsContent>
 
         <TabsContent value="praise">
-           <Card>
+           <Card className="bg-transparent shadow-none border-none">
                 <CardHeader>
                     <CardTitle>Praise Wall</CardTitle>
                     <CardDescription>See how God is at work! Celebrate the testimonies of His faithfulness across the ministry.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     {praiseReports.map(report => (
-                        <div key={report.id} className="border-l-4 border-emerald-500 pl-4 py-2">
-                             <h3 className="font-semibold text-emerald-700 dark:text-emerald-400">{report.title}</h3>
-                            <p className="text-sm text-muted-foreground">{report.text}</p>
+                        <div key={report.id} className="border-l-4 border-emerald-500 pl-4 py-3 bg-emerald-500/10 rounded-r-lg">
+                             <h3 className="font-semibold text-emerald-800 dark:text-emerald-300">{report.title}</h3>
+                            <p className="text-sm text-muted-foreground mt-1">{report.text}</p>
                         </div>
                     ))}
                 </CardContent>
@@ -97,7 +97,7 @@ export default function PrayerNetworkPage() {
                         <Label htmlFor="prayer-region">Region (Optional)</Label>
                         <Input id="prayer-region" placeholder="e.g., Central Region" />
                     </div>
-                    <Button className="w-full">
+                    <Button className="w-full sm:w-auto">
                         <Send className="mr-2 h-4 w-4" />
                         Submit Anonymously
                     </Button>

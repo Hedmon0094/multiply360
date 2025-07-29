@@ -67,7 +67,7 @@ export default function DiscipleshipResourcesPage() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {resources.map((resource) => (
-          <Card key={resource.title} className="flex flex-col">
+          <Card key={resource.title} className="flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
             <CardHeader>
                 <div className="flex items-start justify-between">
                     <div>
@@ -83,7 +83,7 @@ export default function DiscipleshipResourcesPage() {
               <p className="text-sm text-muted-foreground">{resource.description}</p>
             </CardContent>
             <CardFooter className="flex justify-between items-center">
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 {resource.tags.map(tag => (
                   <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
