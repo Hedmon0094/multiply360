@@ -11,7 +11,7 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Mkulima Connect",
+  title: "Multiply360",
   description: "Connecting field leaders, staff, and disciples for Life Ministry Kenya.",
 };
 

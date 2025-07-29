@@ -3,9 +3,9 @@ import { ChevronRight, Target, ShieldCheck, Send } from "lucide-react";
 
 export function LeadershipPipeline() {
   const pipelineStages = [
-    { name: "Win", count: 328, icon: <Target className="h-8 w-8 text-primary" />, description: "Initial outreach & evangelism" },
-    { name: "Build", count: 112, icon: <ShieldCheck className="h-8 w-8 text-primary" />, description: "Discipleship & growth" },
-    { name: "Send", count: 45, icon: <Send className="h-8 w-8 text-primary" />, description: "Multiplying leaders" },
+    { name: "Win", count: 328, icon: <Target className="h-8 w-8 text-accent" />, description: "Initial outreach & evangelism" },
+    { name: "Build", count: 112, icon: <ShieldCheck className="h-8 w-8 text-accent" />, description: "Discipleship & growth" },
+    { name: "Send", count: 45, icon: <Send className="h-8 w-8 text-accent" />, description: "Multiplying leaders" },
   ];
 
   return (

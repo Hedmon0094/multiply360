@@ -19,7 +19,7 @@ import { regionalData } from "@/lib/data"
 const chartConfig = {
   events: {
     label: "Events",
-    color: "hsl(var(--primary))",
+    color: "hsl(var(--accent))",
   },
 } satisfies ChartConfig
 

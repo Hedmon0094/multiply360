@@ -18,7 +18,7 @@ export default function DashboardPage() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back! Here&apos;s a summary of your ministry activities.</p>
+        <p className="text-muted-foreground">Welcome back! Here's a summary of your ministry activities.</p>
       </div>
       <DashboardStats />
       <div className="grid gap-8 lg:grid-cols-3">
@@ -53,7 +53,7 @@ export default function DashboardPage() {
                   <TableCell>{activity.county}</TableCell>
                   <TableCell>
                     <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}
-                      className={activity.status === 'Completed' ? 'bg-green-500/20 text-green-700 hover:bg-green-500/30' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30'}
+                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30'}
                     >
                       {activity.status}
                     </Badge>
