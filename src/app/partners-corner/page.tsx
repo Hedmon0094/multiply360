@@ -129,10 +129,10 @@ export default function PartnersCornerPage() {
                             Your financial partnership is vital for advancing the Gospel. Choose a way to give below.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                           <Button size="sm" onClick={() => handleGiveClick('one-time')} className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-all duration-300 transform hover:scale-105 w-full">
+                           <Button size="sm" onClick={() => handleGiveClick('one-time')} className="bg-amber-600 hover:bg-amber-700 text-amber-50 shadow-md transition-all duration-300 transform hover:scale-105">
                                 <PiggyBank className="mr-2 h-4 w-4"/> One-Time Gift
                             </Button>
-                            <Button size="sm" onClick={() => handleGiveClick('monthly')} variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-all duration-300 transform hover:scale-105 w-full">
+                            <Button size="sm" onClick={() => handleGiveClick('monthly')} variant="outline" className="border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-amber-50 dark:border-amber-400 dark:text-amber-300 dark:hover:bg-amber-400 dark:hover:text-amber-900 transition-all duration-300 transform hover:scale-105">
                                 <Handshake className="mr-2 h-4 w-4"/> Monthly Partner
                             </Button>
                         </div>
