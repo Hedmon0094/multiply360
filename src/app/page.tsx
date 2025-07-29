@@ -6,8 +6,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/logo";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push('/dashboard');
+  }
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-background p-4">
       <Card className="mx-auto w-full max-w-sm">
@@ -43,7 +50,7 @@ export default function LoginPage() {
               </div>
               <Input id="password" type="password" required />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" onClick={handleLogin}>
               Login
             </Button>
             <Button variant="outline" className="w-full">

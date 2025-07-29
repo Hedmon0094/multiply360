@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +12,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/logo";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
+  const router = useRouter();
+
+  const handleSignup = () => {
+    router.push('/dashboard');
+  }
+
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-background p-4">
       <Card className="mx-auto w-full max-w-sm">
@@ -43,7 +52,7 @@ export default function SignupPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" onClick={handleSignup}>
               Create an account
             </Button>
             <Button variant="outline" className="w-full">
