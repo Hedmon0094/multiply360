@@ -18,6 +18,9 @@ import {
   Bot,
   Settings,
   LogOut,
+  BookOpen,
+  Users,
+  Heart,
   BadgeHelp,
 } from "lucide-react";
 import { Logo } from "./logo";
@@ -43,12 +46,20 @@ export function MainSidebar() {
       label: "AI Summarizer",
       icon: <Bot />,
     },
-    {
-      href: "/settings",
-      label: "Settings",
-      icon: <Settings />,
-    },
   ];
+
+  const resourcesItems = [
+     {
+      href: "#",
+      label: "Discipleship Resources",
+      icon: <BookOpen />,
+    },
+     {
+      href: "#",
+      label: "Prayer Network",
+      icon: <Users />,
+    },
+  ]
 
   return (
     <>
@@ -56,44 +67,69 @@ export function MainSidebar() {
         <Logo />
       </SidebarHeader>
       <SidebarContent className="p-2 bg-[url('/sidebar-bg.png')] bg-cover bg-center">
-        <div className="bg-sidebar/80 backdrop-blur-sm rounded-lg h-full">
-            <SidebarMenu>
-            {menuItems.map((item) => (
-                <SidebarMenuItem key={item.href}>
-                <Link href={item.href}>
-                    <SidebarMenuButton
-                    isActive={pathname === item.href}
-                    tooltip={{ children: item.label, side: "right" }}
-                    >
-                    {item.icon}
-                    <span>{item.label}</span>
-                    </SidebarMenuButton>
-                </Link>
-                </SidebarMenuItem>
-            ))}
+        <div className="bg-sidebar/80 backdrop-blur-sm rounded-lg h-full flex flex-col">
+            <SidebarMenu className="flex-1">
+              {menuItems.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                  <Link href={item.href}>
+                      <SidebarMenuButton
+                      isActive={pathname === item.href}
+                      tooltip={{ children: item.label, side: "right" }}
+                      >
+                      {item.icon}
+                      <span>{item.label}</span>
+                      </SidebarMenuButton>
+                  </Link>
+                  </SidebarMenuItem>
+              ))}
+              <SidebarSeparator className="my-2" />
+               {resourcesItems.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                  <Link href={item.href}>
+                      <SidebarMenuButton
+                      isActive={pathname === item.href}
+                      tooltip={{ children: item.label, side: "right" }}
+                      >
+                      {item.icon}
+                      <span>{item.label}</span>
+                      </SidebarMenuButton>
+                  </Link>
+                  </SidebarMenuItem>
+              ))}
             </SidebarMenu>
+             <div className="p-2">
+                <Card className="bg-gradient-to-br from-primary/20 to-transparent border-primary/40 text-center">
+                    <CardHeader className="p-4">
+                        <CardTitle>Get Involved</CardTitle>
+                        <CardDescription className="text-foreground/80">
+                            Join us in prayer or support our mission financially.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-4 pt-0 flex gap-2">
+                        <Button size="sm" className="w-full bg-primary/80 hover:bg-primary">
+                            <Heart className="mr-2 h-4 w-4"/>
+                            Give
+                        </Button>
+                        <Button size="sm" variant="outline" className="w-full">
+                           <Users className="mr-2 h-4 w-4"/>
+                            Pray
+                        </Button>
+                    </CardContent>
+                </Card>
+             </div>
         </div>
       </SidebarContent>
       <SidebarFooter className="p-2">
         <SidebarSeparator />
-        <div className="px-2 py-2">
-          <Card className="bg-transparent border-dashed">
-            <CardHeader className="p-2 pt-0 md:p-4">
-              <CardTitle>Need Help?</CardTitle>
-              <CardDescription>
-                Check our documentation or contact support.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-              <Button size="sm" className="w-full">
-                <BadgeHelp className="mr-2 h-4 w-4"/>
-                Support
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-        <SidebarSeparator />
         <SidebarMenu>
+           <SidebarMenuItem>
+             <Link href="/settings">
+                <SidebarMenuButton tooltip={{ children: 'Settings', side: 'right' }} isActive={pathname === '/settings'}>
+                    <Settings />
+                    <span>Settings</span>
+                </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
           <SidebarMenuItem>
              <Link href="/">
                 <SidebarMenuButton tooltip={{ children: 'Logout', side: 'right' }}>
