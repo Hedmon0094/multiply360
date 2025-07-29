@@ -8,11 +8,11 @@ import { Badge } from "@/components/ui/badge";
 
 export default function DashboardPage() {
   const recentActivities = [
-    { disciple: "John Omondi", activity: "Evangelism Outreach", county: "Nairobi", status: "Completed" },
-    { disciple: "Mary Wanjiru", activity: "Discipleship", county: "Kiambu", status: "Follow-up" },
-    { disciple: "David Koech", activity: "Leadership Training", county: "Nakuru", status: "Completed" },
-    { disciple: "Grace Akinyi", activity: "Evangelism Outreach", county: "Mombasa", status: "Completed" },
-    { disciple: "Peter Musyoka", activity: "Discipleship", county: "Machakos", status: "Follow-up" },
+    { disciple: "John Omondi", activity: "Evangelism Outreach", region: "Nairobi Region", county: "Nairobi", status: "Completed" },
+    { disciple: "Mary Wanjiru", activity: "Discipleship", region: "Central Region", county: "Kiambu", status: "Follow-up" },
+    { disciple: "David Koech", activity: "Leadership Training", region: "South Rift Region", county: "Nakuru", status: "Completed" },
+    { disciple: "Grace Akinyi", activity: "Evangelism Outreach", region: "Coast Region", county: "Mombasa", status: "Completed" },
+    { disciple: "Peter Musyoka", activity: "Discipleship", region: "Eastern Region", county: "Machakos", status: "Follow-up" },
   ];
 
   return (
@@ -45,6 +45,7 @@ export default function DashboardPage() {
               <TableRow>
                 <TableHead>Disciple/Leader</TableHead>
                 <TableHead>Activity</TableHead>
+                <TableHead>Region</TableHead>
                 <TableHead>County</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
@@ -54,6 +55,7 @@ export default function DashboardPage() {
                 <TableRow key={index}>
                   <TableCell className="font-medium">{activity.disciple}</TableCell>
                   <TableCell>{activity.activity}</TableCell>
+                  <TableCell>{activity.region}</TableCell>
                   <TableCell>{activity.county}</TableCell>
                   <TableCell>
                     <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}

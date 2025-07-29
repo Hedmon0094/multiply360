@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/logo";
 import { useRouter } from "next/navigation";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { lmkRegions } from "@/lib/data";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -49,6 +51,21 @@ export default function SignupPage() {
                   placeholder="name@lifeministry.co.ke"
                   required
                 />
+              </div>
+               <div className="grid gap-2">
+                <Label htmlFor="region">Region</Label>
+                <Select required>
+                  <SelectTrigger id="region">
+                    <SelectValue placeholder="Select your region" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {lmkRegions.map((region) => (
+                      <SelectItem key={region} value={region}>
+                        {region}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>

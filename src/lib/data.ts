@@ -1,3 +1,14 @@
+export const lmkRegions = [
+    "Nairobi Region",
+    "Central Region",
+    "Coast Region",
+    "Western Region",
+    "Nyanza Region",
+    "Eastern Region",
+    "North Rift Region",
+    "South Rift Region"
+];
+
 export const kenyanCounties = [
     "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo Marakwet", "Embu", 
     "Garissa", "Homa Bay", "Isiolo", "Kajiado", "Kakamega", "Kericho", 

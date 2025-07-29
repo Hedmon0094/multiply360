@@ -24,12 +24,15 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { kenyanCounties } from "@/lib/data";
+import { kenyanCounties, lmkRegions } from "@/lib/data";
 import { Upload, Mic, FileText } from "lucide-react";
 
 const activityFormSchema = z.object({
   eventType: z.string({
     required_error: "Please select an event type.",
+  }),
+  region: z.string({
+    required_error: "Please select a region.",
   }),
   location: z.string({
     required_error: "Please select a county.",
@@ -45,6 +48,7 @@ type ActivityFormValues = z.infer<typeof activityFormSchema>;
 
 const defaultValues: Partial<ActivityFormValues> = {
   eventType: "",
+  region: "",
   location: "",
   attendance: 0,
   notes: "",
@@ -96,6 +100,30 @@ export function ActivityLogForm() {
                   </FormItem>
                 )}
               />
+               <FormField
+                control={form.control}
+                name="region"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Region</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a region" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {lmkRegions.map((region) => (
+                          <SelectItem key={region} value={region}>
+                            {region}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="location"
@@ -120,22 +148,21 @@ export function ActivityLogForm() {
                   </FormItem>
                 )}
               />
+               <FormField
+                control={form.control}
+                name="attendance"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Attendance</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="0" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             
-            <FormField
-              control={form.control}
-              name="attendance"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Attendance</FormLabel>
-                  <FormControl>
-                    <Input type="number" placeholder="0" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             <FormField
               control={form.control}
               name="notes"
@@ -164,7 +191,7 @@ export function ActivityLogForm() {
                         <FormControl>
                         <div className="relative">
                             <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input type="file" accept="image/*" className="pl-10" {...field} value={field.value?.fileName} />
+                            <Input type="file" accept="image/*" className="pl-10" onChange={(e) => field.onChange(e.target.files)} />
                         </div>
                         </FormControl>
                         <FormDescription>
@@ -183,7 +210,7 @@ export function ActivityLogForm() {
                         <FormControl>
                             <div className="relative">
                                 <Mic className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                <Input type="file" accept="audio/*" className="pl-10" {...field} value={field.value?.fileName} />
+                                <Input type="file" accept="audio/*" className="pl-10" onChange={(e) => field.onChange(e.target.files)} />
                             </div>
                         </FormControl>
                         <FormDescription>
