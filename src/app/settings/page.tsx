@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { User, Bell, Palette, Shield } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function SettingsPage() {
   return (
@@ -81,13 +82,7 @@ export default function SettingsPage() {
                     <CardDescription>Customize the look and feel of the app.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-lg border">
-                        <div className="mb-2 sm:mb-0">
-                            <Label htmlFor="dark-mode">Dark Mode</Label>
-                            <p className="text-sm text-muted-foreground">Enable for better viewing at night.</p>
-                        </div>
-                        <Switch id="dark-mode" />
-                    </div>
+                   <ThemeToggle />
                 </CardContent>
             </Card>
             

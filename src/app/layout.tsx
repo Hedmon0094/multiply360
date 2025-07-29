@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
 import { LayoutClientProvider } from "@/components/layout-client-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const ptSans = PT_Sans({
   subsets: ["latin"],
@@ -22,7 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${ptSans.variable} font-sans antialiased`}>
-        <LayoutClientProvider>{children}</LayoutClientProvider>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+          <LayoutClientProvider>{children}</LayoutClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
