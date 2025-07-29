@@ -23,7 +23,7 @@ export function LeadershipPipeline() {
                 <span className="text-sm font-medium text-foreground">{stage.name}</span>
                 <span className="text-sm font-medium text-muted-foreground">{stage.count} / {stage.goal}</span>
               </div>
-              <Progress value={progress} className="h-3 [&>div]:bg-primary" />
+              <Progress value={progress} className="h-3" indicatorClassName={stage.color} />
             </div>
           );
         })}
