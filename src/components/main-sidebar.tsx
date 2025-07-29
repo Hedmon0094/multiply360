@@ -80,6 +80,11 @@ export function MainSidebar() {
       label: "Events & Trainings",
       icon: <Calendar />,
     },
+     {
+      href: "/leadership-academy",
+      label: "Leadership Academy",
+      icon: <ShieldCheck />,
+    },
   ];
 
   const resourcesItems = [
