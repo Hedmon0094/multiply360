@@ -93,6 +93,11 @@ export function MainSidebar() {
       label: "Ministry Toolkit",
       icon: <Briefcase />,
     },
+    {
+      href: "/language-hub",
+      label: "Language Hub",
+      icon: <Languages />,
+    }
   ]
 
   const partnerItems = [
