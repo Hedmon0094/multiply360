@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Video, List, Filter, PlusCircle } from "lucide-react";
@@ -6,11 +8,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { lmkRegions } from "@/lib/data";
+import { useToast } from "@/hooks/use-toast";
+import { Heart } from "lucide-react";
 
 const upcomingEvents = [
   {
     title: "Nairobi Region Campus Outreach",
-    date: "Saturday, September 14, 2024",
+    date: "Saturday, October 26, 2024",
     time: "10:00 AM - 2:00 PM",
     location: "University of Nairobi",
     type: "Evangelism",
@@ -19,7 +23,7 @@ const upcomingEvents = [
   },
   {
     title: "Digital Discipleship 101 Training",
-    date: "Tuesday, September 17, 2024",
+    date: "Tuesday, October 29, 2024",
     time: "7:00 PM - 8:30 PM",
     location: "Online via Zoom",
     type: "Training",
@@ -28,7 +32,7 @@ const upcomingEvents = [
   },
   {
     title: "Prayer Walk for Nakuru County",
-    date: "Friday, September 20, 2024",
+    date: "Friday, November 1, 2024",
     time: "6:00 AM - 7:00 AM",
     location: "Nakuru CBD",
     type: "Prayer",
@@ -40,6 +44,15 @@ const upcomingEvents = [
 const eventTypes = ["Evangelism", "Training", "Prayer", "Conference", "Community"];
 
 export default function EventsTrainingsPage() {
+  const { toast } = useToast();
+
+  const handleActionClick = (message: string) => {
+    toast({
+      title: "Feature Coming Soon!",
+      description: message,
+    });
+  };
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -49,7 +62,7 @@ export default function EventsTrainingsPage() {
             Find upcoming events, register for trainings, and watch past sessions.
             </p>
         </div>
-         <Button size="lg" className="w-full md:w-auto">
+         <Button size="lg" className="w-full md:w-auto" onClick={() => handleActionClick("The ability to create and manage events is in development.")}>
             <PlusCircle className="mr-2 h-5 w-5" />
             Create an Event
         </Button>
@@ -107,8 +120,8 @@ export default function EventsTrainingsPage() {
                                     </CardDescription>
                                 </div>
                                 <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                                    <Button variant="outline" className="w-full sm:w-auto">View Details</Button>
-                                    <Button className="w-full sm:w-auto">RSVP</Button>
+                                    <Button variant="outline" className="w-full sm:w-auto" onClick={() => handleActionClick("Detailed event view is coming soon.")}>View Details</Button>
+                                    <Button className="w-full sm:w-auto" onClick={() => handleActionClick("RSVP functionality is being developed.")}>RSVP</Button>
                                 </div>
                             </div>
                         </CardHeader>

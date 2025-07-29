@@ -8,27 +8,41 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Bot, Languages, Loader2, Sparkles } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { summarize } from "@/ai/flows/summarize-flow";
+import { useToast } from "@/hooks/use-toast";
 
 export function SummarizerTool() {
   const [inputText, setInputText] = useState("");
   const [language, setLanguage] = useState("swahili");
   const [summary, setSummary] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleSummarize = async () => {
     if (!inputText.trim()) {
-      setSummary("Please enter some text to summarize.");
+      toast({
+        variant: "destructive",
+        title: "Input Required",
+        description: "Please enter some text to summarize.",
+      });
       return;
     }
     setIsLoading(true);
     setSummary("");
     
-    // Simulate AI call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const generatedSummary = `AI Summary in ${language.charAt(0).toUpperCase() + language.slice(1)}: Based on the provided notes, the outreach in Nairobi was successful, with over 50 attendees. Key challenges included transportation issues. The main feedback was a request for more Bibles. Follow-up is scheduled for next week. (This is a simulated AI response.)`;
-    setSummary(generatedSummary);
-    setIsLoading(false);
+    try {
+        const result = await summarize({ notes: inputText, language });
+        setSummary(result.summary);
+    } catch(e) {
+        console.error(e);
+        toast({
+            variant: "destructive",
+            title: "An Error Occurred",
+            description: "Could not generate the summary. Please try again.",
+        });
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   return (
@@ -85,7 +99,7 @@ export function SummarizerTool() {
             </div>
         </div>
       </CardContent>
-      {summary && (
+      {summary && !isLoading && (
         <CardFooter>
             <Alert className="border-primary/50 bg-primary/5 text-primary-foreground">
                 <Bot className="h-5 w-5 text-primary" />

@@ -27,6 +27,7 @@ import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { kenyanCounties, lmkRegions } from "@/lib/data";
 import { Upload, Mic, FileText, Camera } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const activityFormSchema = z.object({
   eventType: z.string({
@@ -38,7 +39,7 @@ const activityFormSchema = z.object({
   location: z.string({
     required_error: "Please select a county.",
   }),
-  attendance: z.coerce.number().min(0, "Attendance cannot be negative."),
+  attendance: z.coerce.number().min(0, "Attendance cannot be negative.").optional(),
   notes: z.string().max(500, "Notes cannot exceed 500 characters.").optional(),
   followUpRequired: z.boolean().default(false).optional(),
   photo: z.any().optional(),
@@ -57,6 +58,7 @@ const defaultValues: Partial<ActivityFormValues> = {
 };
 
 export function ActivityLogForm() {
+  const { toast } = useToast();
   const form = useForm<ActivityFormValues>({
     resolver: zodResolver(activityFormSchema),
     defaultValues,
@@ -64,8 +66,12 @@ export function ActivityLogForm() {
 
   function onSubmit(data: ActivityFormValues) {
     console.log(data);
-    // Here you would handle form submission, including uploading files to Firebase Storage
-    // and saving form data to Firestore.
+    form.reset();
+    toast({
+        title: "Activity Logged Successfully!",
+        description: "Your ministry activity has been recorded. Thank you for your faithful work.",
+        action: <FileText className="h-5 w-5 text-primary" />,
+    })
   }
 
   return (
@@ -83,7 +89,7 @@ export function ActivityLogForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Event Type</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select an event type" />
@@ -107,7 +113,7 @@ export function ActivityLogForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Region</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a region" />
@@ -131,7 +137,7 @@ export function ActivityLogForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Location (County)</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select a county" />

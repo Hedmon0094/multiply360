@@ -1,4 +1,7 @@
 
+"use client";
+
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -7,8 +10,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
-const prayerPoints = [
+const initialPrayerPoints = [
     { id: 1, category: "National", title: "Unity in the Nation", text: "Pray for peace and unity across Kenya, especially among its leaders and diverse communities.", count: 128 },
     { id: 2, category: "Campus Ministry", title: "Student Outreach in Nairobi", text: "Pray for the upcoming campus outreach events in the Nairobi region, that many students would come to faith.", count: 212 },
     { id: 3, category: "Leadership", title: "Wisdom for LMK Leaders", text: "Pray for wisdom and guidance for all Life Ministry Kenya leaders as they make strategic decisions.", count: 98 },
@@ -21,6 +25,45 @@ const praiseReports = [
 ];
 
 export default function PrayerNetworkPage() {
+  const [prayerPoints, setPrayerPoints] = useState(initialPrayerPoints);
+  const [requestTitle, setRequestTitle] = useState("");
+  const [requestDetails, setRequestDetails] = useState("");
+  const { toast } = useToast();
+
+  const handlePrayedClick = (id: number) => {
+    setPrayerPoints(currentPoints =>
+      currentPoints.map(p =>
+        p.id === id ? { ...p, count: p.count + 1 } : p
+      )
+    );
+    toast({
+      title: "Thank You!",
+      description: "Your prayer has been added. God bless you!",
+      action: <Heart className="h-5 w-5 text-rose-500" />,
+    });
+  };
+  
+  const handleSubmitRequest = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!requestTitle.trim() || !requestDetails.trim()) {
+          toast({
+              variant: "destructive",
+              title: "Incomplete Form",
+              description: "Please fill out both the title and details for your prayer request.",
+          });
+          return;
+      }
+
+      toast({
+          title: "Request Submitted",
+          description: "Your prayer request has been shared with the network. We are standing with you.",
+      });
+
+      // Reset form
+      setRequestTitle("");
+      setRequestDetails("");
+  }
+
   return (
     <div className="flex flex-col gap-8 bg-purple-50/50 dark:bg-purple-900/10 -m-4 sm:-m-6 md:-m-8 p-4 sm:p-6 md:p-8">
       <div className="max-w-3xl">
@@ -51,7 +94,7 @@ export default function PrayerNetworkPage() {
                             <h3 className="font-semibold">{point.title}</h3>
                             <p className="text-sm text-muted-foreground mt-1">{point.text}</p>
                         </div>
-                        <Button variant="outline" className="flex items-center gap-2 shrink-0 w-full sm:w-auto group">
+                        <Button variant="outline" className="flex items-center gap-2 shrink-0 w-full sm:w-auto group" onClick={() => handlePrayedClick(point.id)}>
                             <Heart className="h-4 w-4 text-rose-500 transition-transform group-hover:scale-110" /> 
                             <span>I Prayed ({point.count})</span>
                         </Button>
@@ -84,23 +127,21 @@ export default function PrayerNetworkPage() {
                     <CardTitle>Submit a Prayer Request</CardTitle>
                     <CardDescription>Share your prayer needs with the community. Requests can be submitted anonymously.</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="grid gap-2">
-                        <Label htmlFor="prayer-title">Prayer Title</Label>
-                        <Input id="prayer-title" placeholder="e.g., Healing for my mother" />
-                    </div>
-                     <div className="grid gap-2">
-                        <Label htmlFor="prayer-request">Your Prayer Request</Label>
-                        <Textarea id="prayer-request" placeholder="Please provide details about your prayer request..." rows={5} />
-                    </div>
-                     <div className="grid gap-2">
-                        <Label htmlFor="prayer-region">Region (Optional)</Label>
-                        <Input id="prayer-region" placeholder="e.g., Central Region" />
-                    </div>
-                    <Button className="w-full sm:w-auto">
-                        <Send className="mr-2 h-4 w-4" />
-                        Submit Anonymously
-                    </Button>
+                <CardContent>
+                    <form onSubmit={handleSubmitRequest} className="space-y-4">
+                        <div className="grid gap-2">
+                            <Label htmlFor="prayer-title">Prayer Title</Label>
+                            <Input id="prayer-title" placeholder="e.g., Healing for my mother" value={requestTitle} onChange={(e) => setRequestTitle(e.target.value)} />
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="prayer-request">Your Prayer Request</Label>
+                            <Textarea id="prayer-request" placeholder="Please provide details about your prayer request..." rows={5} value={requestDetails} onChange={(e) => setRequestDetails(e.target.value)} />
+                        </div>
+                        <Button type="submit" className="w-full sm:w-auto">
+                            <Send className="mr-2 h-4 w-4" />
+                            Submit Anonymously
+                        </Button>
+                    </form>
                 </CardContent>
             </Card>
         </TabsContent>

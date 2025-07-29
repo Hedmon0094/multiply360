@@ -1,9 +1,12 @@
 
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Flame, CheckSquare, Trophy, PlusCircle, Users } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 
 const activeChallenges = [
     {
@@ -29,6 +32,15 @@ const activeChallenges = [
 const completedBadges = ["Prayer Warrior", "Evangelism Starter", "Discipleship 101"];
 
 export default function FaithChallengesPage() {
+    const { toast } = useToast();
+
+    const handleActionClick = (message: string) => {
+        toast({
+            title: "Challenge Accepted!",
+            description: message,
+        });
+    };
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -38,7 +50,7 @@ export default function FaithChallengesPage() {
             Join campaigns that will stretch your faith and multiply your impact.
           </p>
         </div>
-         <Button size="lg" className="w-full sm:w-auto">
+         <Button size="lg" className="w-full sm:w-auto" onClick={() => handleActionClick("Challenge browsing & joining is coming soon.")}>
             <PlusCircle className="mr-2 h-5 w-5" />
             Join a Challenge
         </Button>
@@ -63,7 +75,7 @@ export default function FaithChallengesPage() {
                                     <p className="text-sm text-muted-foreground">{challenge.description}</p>
                                 </div>
                             </div>
-                             <Button variant="outline" size="sm" className="w-full sm:w-auto mt-2 sm:mt-0">
+                             <Button variant="outline" size="sm" className="w-full sm:w-auto mt-2 sm:mt-0" onClick={() => handleActionClick("Great job! Your check-in has been logged.")}>
                                 <CheckSquare className="mr-2 h-4 w-4 text-accent"/> Check In
                             </Button>
                         </div>
