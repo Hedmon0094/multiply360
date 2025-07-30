@@ -35,6 +35,7 @@ import {
   Map,
   UserPlus,
   MessageSquare,
+  Code,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -114,6 +115,11 @@ export function MainSidebar() {
       href: "/leadership-academy",
       label: "Leadership Academy",
       icon: <ShieldCheck />,
+    },
+     {
+      href: "/indigitous-kenya",
+      label: "Indigitous Kenya",
+      icon: <Code />,
     },
   ];
 
