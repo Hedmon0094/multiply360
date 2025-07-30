@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,7 @@ const missionFilters = [
 
 export default function DigitalMissionsExplorerPage() {
     const { toast } = useToast();
+    const [activeFilter, setActiveFilter] = useState("All Missions");
 
     const handleAdoptClick = () => {
         toast({
@@ -44,7 +46,11 @@ export default function DigitalMissionsExplorerPage() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                            {missionFilters.map(filter => (
-                               <Button key={filter.label} variant={filter.label === 'All Missions' ? 'default' : 'outline'}>
+                               <Button 
+                                key={filter.label} 
+                                variant={activeFilter === filter.label ? 'default' : 'outline'}
+                                onClick={() => setActiveFilter(filter.label)}
+                                >
                                    {filter.icon}
                                    {filter.label}
                                </Button>
@@ -79,7 +85,7 @@ export default function DigitalMissionsExplorerPage() {
                     <Card className="shadow-lg sticky top-24">
                         <CardHeader className="bg-muted rounded-t-xl">
                             <CardTitle className="text-primary">Nakuru County</CardTitle>
-                            <CardDescription>Last outreach: August 2025</CardDescription>
+                            <CardDescription>Last outreach: August 2024</CardDescription>
                         </CardHeader>
                         <CardContent className="pt-6 space-y-4">
                             <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
