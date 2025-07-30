@@ -36,6 +36,7 @@ import {
   UserPlus,
   MessageSquare,
   Code,
+  GraduationCap,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -143,6 +144,11 @@ export function MainSidebar() {
       href: "/jesus-film-hub",
       label: "Jesus Film Hub",
       icon: <Film />,
+    },
+    {
+      href: "/every-student",
+      label: "EveryStudent",
+      icon: <GraduationCap />,
     }
   ]
 
