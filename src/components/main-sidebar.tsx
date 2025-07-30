@@ -37,6 +37,7 @@ import {
   MessageSquare,
   Code,
   GraduationCap,
+  LifeBuoy,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -65,6 +66,11 @@ export function MainSidebar() {
       href: "/about",
       label: "About",
       icon: <Info />,
+    },
+     {
+      href: "/support",
+      label: "Support",
+      icon: <LifeBuoy />,
     },
   ];
 
