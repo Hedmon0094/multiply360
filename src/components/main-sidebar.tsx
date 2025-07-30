@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -33,6 +32,7 @@ import {
   Info,
   Film,
   Map,
+  UserPlus,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -86,7 +86,7 @@ export function MainSidebar() {
      {
       href: "/prayer-network",
       label: "Prayer Network",
-      icon: <Users />,
+      icon: <Heart />,
     },
     {
         href: "/impact-stories",
@@ -97,6 +97,11 @@ export function MainSidebar() {
       href: "/events-trainings",
       label: "Events & Trainings",
       icon: <Calendar />,
+    },
+     {
+      href: "/connect",
+      label: "Connect",
+      icon: <UserPlus />,
     },
      {
       href: "/leadership-academy",
