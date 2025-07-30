@@ -1,21 +1,46 @@
 
 "use client";
 
+import { useState, useMemo } from "react";
 import { VerseOfTheDay } from "@/components/verse-of-the-day";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { BookOpen, Headphones, Bookmark, Share2, ArrowRight } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { bibleBooks } from "@/lib/bible-data";
 
 const readingPlans = [
     { title: "7 Days on the Life of Jesus", progress: 4, total: 7, color: "bg-primary" },
     { title: "30 Days of Prayer", progress: 12, total: 30, color: "bg-amber-500" },
     { title: "Foundations of Faith", progress: 0, total: 14, color: "bg-accent" },
-]
+];
+
+const sampleVerses: { [key: string]: { [lang: string]: { verse: string; text: string } } } = {
+  "Genesis-1": {
+    swahili: { verse: "Genesis 1:1", text: "Hapo mwanzo Mungu aliziumba mbingu na nchi." },
+    english: { verse: "Genesis 1:1", text: "In the beginning God created the heavens and the earth." }
+  },
+  "John-3": {
+    swahili: { verse: "Yohana 3:16", text: "Kwa maana jinsi hii Mungu aliupenda ulimwengu, hata akamtoa Mwanawe pekee, ili kila mtu amwaminiye asipotee, bali awe na uzima wa milele." },
+    english: { verse: "John 3:16", text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life." }
+  },
+  "Romans-8": {
+     swahili: { verse: "Warumi 8:28", text: "Nasi twajua ya kuwa katika mambo yote Mungu hufanya kazi pamoja na wale wampendao katika kuwapatia mema, yaani, wale walioitwa kwa kusudi lake." },
+     english: { verse: "Romans 8:28", text: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose." }
+  },
+   "Matthew-28": {
+    swahili: { verse: "Mathayo 28:19", text: "Basi, enendeni, mkawafanye mataifa yote kuwa wanafunzi, mkiwabatiza kwa jina la Baba, na la Mwana, na la Roho Mtakatifu;" },
+    english: { verse: "Matthew 28:19", text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit," }
+  },
+};
+
 
 export default function DevotionalCenterPage() {
   const { toast } = useToast();
+  const [language, setLanguage] = useState("swahili");
+  const [selectedBook, setSelectedBook] = useState("Genesis");
+  const [selectedChapter, setSelectedChapter] = useState("1");
 
   const handleActionClick = (message: string) => {
     toast({
@@ -23,6 +48,14 @@ export default function DevotionalCenterPage() {
       description: message,
     });
   };
+
+  const chapters = useMemo(() => {
+    const book = bibleBooks.find(b => b.name === selectedBook);
+    return book ? Array.from({ length: book.chapters }, (_, i) => i + 1) : [];
+  }, [selectedBook]);
+
+  const scriptureKey = `${selectedBook}-${selectedChapter}`;
+  const displayScripture = sampleVerses[scriptureKey] || sampleVerses["Genesis-1"];
 
   return (
     <div className="flex flex-col gap-8">
@@ -45,39 +78,41 @@ export default function DevotionalCenterPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <Select defaultValue="swahili">
+                            <Select value={language} onValueChange={setLanguage}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Language" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="swahili">Kiswahili</SelectItem>
                                     <SelectItem value="english">English</SelectItem>
-                                    <SelectItem value="luo">Luo</SelectItem>
                                 </SelectContent>
                             </Select>
-                            <Select defaultValue="genesis">
+                            <Select value={selectedBook} onValueChange={(book) => { setSelectedBook(book); setSelectedChapter("1"); }}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Book" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="genesis">Genesis</SelectItem>
-                                    <SelectItem value="matthew">Matthew</SelectItem>
-                                    <SelectItem value="revelation">Revelation</SelectItem>
+                                    {bibleBooks.map(book => (
+                                        <SelectItem key={book.name} value={book.name}>{book.name}</SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
-                            <Select defaultValue="1">
+                            <Select value={selectedChapter} onValueChange={setSelectedChapter}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Chapter" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="1">Chapter 1</SelectItem>
-                                    <SelectItem value="2">Chapter 2</SelectItem>
+                                   {chapters.map(chapter => (
+                                        <SelectItem key={chapter} value={String(chapter)}>Chapter {chapter}</SelectItem>
+                                   ))}
                                 </SelectContent>
                             </Select>
                         </div>
                         <div className="p-4 rounded-lg bg-muted/70 border font-serif text-lg leading-loose">
-                            <p><strong>1</strong> Hapo mwanzo Mungu aliziumba mbingu na nchi.</p>
-                            <p><strong>2</strong> Nayo nchi ilikuwa ukiwa, tena utupu, na giza lilikuwa juu ya uso wa vilindi vya maji; Roho ya Mungu ikatulia juu ya uso wa maji.</p>
+                            <p><strong>{displayScripture[language]?.verse.split(' ')[1]}</strong> {displayScripture[language]?.text}</p>
+                            <p className="text-base text-muted-foreground mt-2 italic">
+                                Note: This is a sample verse. Full chapter content is coming soon.
+                            </p>
                         </div>
                     </CardContent>
                     <CardFooter className="flex flex-wrap justify-between items-center gap-2">
