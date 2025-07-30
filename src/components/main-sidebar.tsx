@@ -32,6 +32,7 @@ import {
   Flame,
   Info,
   Film,
+  Map,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -73,6 +74,11 @@ export function MainSidebar() {
       href: "/faith-challenges",
       label: "Faith Challenges",
       icon: <Flame />,
+    },
+    {
+      href: "/digital-missions-explorer",
+      label: "Missions Explorer",
+      icon: <Map />,
     },
   ];
 
