@@ -11,13 +11,13 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
-export const SummarizeInputSchema = z.object({
+const SummarizeInputSchema = z.object({
   notes: z.string().describe('The field notes to be summarized.'),
   language: z.string().describe('The language to translate the summary into.'),
 });
 export type SummarizeInput = z.infer<typeof SummarizeInputSchema>;
 
-export const SummarizeOutputSchema = z.object({
+const SummarizeOutputSchema = z.object({
   summary: z.string().describe('The summarized and translated text.'),
 });
 export type SummarizeOutput = z.infer<typeof SummarizeOutputSchema>;
