@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -33,6 +34,7 @@ import {
   Film,
   Map,
   UserPlus,
+  MessageSquare,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -102,6 +104,11 @@ export function MainSidebar() {
       href: "/connect",
       label: "Connect",
       icon: <UserPlus />,
+    },
+    {
+      href: "/spiritual-guidance",
+      label: "Spiritual Guidance",
+      icon: <MessageSquare />,
     },
      {
       href: "/leadership-academy",
