@@ -1,8 +1,8 @@
 export function Logo({ className }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-2 text-foreground ${className}`}>
+    <div className={`flex items-center gap-3 text-foreground ${className}`}>
       <svg
-        className="h-7 w-7 text-primary"
+        className="h-8 w-8 text-primary"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -15,24 +15,17 @@ export function Logo({ className }: { className?: string }) {
           strokeLinejoin="round"
         />
         <path
-          d="M15.5 9.5C15.5 8.42011 15.0786 7.38571 14.3284 6.63553C13.5782 5.88536 12.5438 5.46429 11.5 5.46429C9.5 5.46429 8.5 6.96429 8.5 6.96429M8.5 6.96429V9.5M8.5 6.96429H10"
+          d="M10.5 7C10.6554 7.4938 10.9631 7.93172 11.3881 8.26189C11.8131 8.59206 12.3333 8.8001 12.87 8.86C14.71 9.08 15.5 10.59 15.5 10.59C15.5 10.59 16.5 10.03 17.5 10.5C18.5 10.97 18.5 12.5 18.5 12.5C18.5 12.5 18.5 15.5 15 17C11.5 18.5 7.5 16.5 7.5 12.5C7.5 8.5 10.5 7 10.5 7Z"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path
-          d="M8.5 14.5C8.5 15.5799 8.92143 16.6143 9.67157 17.3645C10.4217 18.1146 11.4561 18.5357 12.5 18.5357C14.5 18.5357 15.5 17.0357 15.5 17.0357M15.5 17.0357V14.5M15.5 17.0357H14"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12 12H12.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
+        <path 
+          d="M10.5 7C10.5 7 9.5 5.5 8 5.5C6.5 5.5 6 7 6 7" 
+          stroke="currentColor" 
+          strokeWidth="1.5" 
+          strokeLinecap="round" 
           strokeLinejoin="round"
         />
       </svg>
