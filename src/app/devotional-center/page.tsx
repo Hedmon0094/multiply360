@@ -56,6 +56,12 @@ const bookDefaultVerse: { [key: string]: string } = {
     "Philippians": "Philippians-4",
 };
 
+const readingPlans = [
+    { title: "Knowing Jesus in 7 Days", total: 7, progress: 3 },
+    { title: "The Life of David", total: 30, progress: 0 },
+    { title: "Foundations of Faith", total: 14, progress: 14 },
+];
+
 
 export default function DevotionalCenterPage() {
   const { toast } = useToast();
