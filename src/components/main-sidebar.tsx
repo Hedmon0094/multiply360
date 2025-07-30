@@ -131,7 +131,7 @@ export function MainSidebar() {
     },
      {
       href: "/ministry-toolkit",
-      label: "Ministry Toolkit",
+      label: "GodTools Hub",
       icon: <Briefcase />,
     },
     {
