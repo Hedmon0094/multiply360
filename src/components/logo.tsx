@@ -1,3 +1,4 @@
+
 export function Logo({ className }: { className?: string }) {
   return (
     <div className={`flex items-center gap-3 text-foreground ${className}`}>
@@ -13,7 +14,7 @@ export function Logo({ className }: { className?: string }) {
       </svg>
       <div>
         <span className="text-xl font-bold">Multiply360</span>
-        <p className="text-xs text-muted-foreground -mt-1">A Life Ministry Kenya App</p>
+        <p className="text-xs font-medium text-accent -mt-1 italic">Multiplying disciples in every county.</p>
       </div>
     </div>
   );
