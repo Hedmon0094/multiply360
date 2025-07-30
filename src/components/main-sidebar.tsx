@@ -31,6 +31,7 @@ import {
   Briefcase,
   Flame,
   Info,
+  Film,
 } from "lucide-react";
 import { Logo } from "./logo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
@@ -113,6 +114,11 @@ export function MainSidebar() {
       href: "/language-hub",
       label: "Language Hub",
       icon: <Languages />,
+    },
+     {
+      href: "/jesus-film-hub",
+      label: "Jesus Film Hub",
+      icon: <Film />,
     }
   ]
 
