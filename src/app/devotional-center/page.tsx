@@ -10,29 +10,50 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { bibleBooks } from "@/lib/bible-data";
 
-const readingPlans = [
-    { title: "7 Days on the Life of Jesus", progress: 4, total: 7, color: "bg-primary" },
-    { title: "30 Days of Prayer", progress: 12, total: 30, color: "bg-amber-500" },
-    { title: "Foundations of Faith", progress: 0, total: 14, color: "bg-accent" },
-];
-
 const sampleVerses: { [key: string]: { [lang: string]: { verse: string; text: string } } } = {
   "Genesis-1": {
     swahili: { verse: "Mwanzo 1:1", text: "Hapo mwanzo Mungu aliziumba mbingu na nchi." },
     english: { verse: "Genesis 1:1", text: "In the beginning God created the heavens and the earth." }
   },
-  "John-1": {
-    swahili: { verse: "Yohana 1:1", text: "Hapo mwanzo kulikuwako Neno, naye Neno alikuwako kwa Mungu, naye Neno alikuwa Mungu." },
-    english: { verse: "John 1:1", text: "In the beginning was the Word, and the Word was with God, and the Word was God." }
+  "Exodus-20": {
+      swahili: { verse: "Kutoka 20:3", text: "Usiwe na miungu mingine ila mimi." },
+      english: { verse: "Exodus 20:3", text: "You shall have no other gods before me." }
   },
-  "Romans-1": {
-     swahili: { verse: "Warumi 1:16", text: "Kwa maana siionei haya Injili; kwa sababu ni uweza wa Mungu uuletao wokovu, kwa kila aaminiye, kwa Myahudi kwanza, na kwa Myunani pia." },
-     english: { verse: "Romans 1:16", text: "For I am not ashamed of the gospel, because it is the power of God that brings salvation to everyone who believes: first to the Jew, then to the Gentile." }
+  "John-3": {
+    swahili: { verse: "Yohana 3:16", text: "Kwa maana jinsi hii Mungu aliupenda ulimwengu, hata akamtoa Mwanawe pekee, ili kila mtu amwaminiye asipotee, bali awe na uzima wa milele." },
+    english: { verse: "John 3:16", text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life." }
   },
-   "Matthew-1": {
-    swahili: { verse: "Mathayo 1:21", text: "Naye atazaa mwana, nawe utamwita jina lake Yesu; maana, yeye ndiye atakayewaokoa watu wake na dhambi zao." },
-    english: { verse: "Matthew 1:21", text: "She will give birth to a son, and you are to give him the name Jesus, because he will save his people from their sins." }
+  "Romans-8": {
+     swahili: { verse: "Warumi 8:28", text: "Nasi twajua ya kuwa katika mambo yote Mungu hufanya kazi pamoja na wale wampendao katika kuwapatia mema, yaani, wale walioitwa kwa kusudi lake." },
+     english: { verse: "Romans 8:28", text: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose." }
   },
+   "Matthew-28": {
+    swahili: { verse: "Mathayo 28:19", text: "Kwa hiyo enendeni, mkawafanye mataifa yote kuwa wanafunzi, mkiwabatiza kwa jina la Baba, na Mwana, na Roho Mtakatifu." },
+    english: { verse: "Matthew 28:19", text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit." }
+  },
+  "Psalms-23": {
+    swahili: { verse: "Zaburi 23:1", text: "BWANA ndiye mchungaji wangu, Sitapungukiwa na kitu." },
+    english: { verse: "Psalms 23:1", text: "The LORD is my shepherd, I shall not be in want." }
+  },
+  "Proverbs-3": {
+    swahili: { verse: "Mithali 3:5", text: "Mtumaini BWANA kwa moyo wako wote, Wala usizitegemee akili zako mwenyewe." },
+    english: { verse: "Proverbs 3:5", text: "Trust in the LORD with all your heart and lean not on your own understanding." }
+  },
+  "Philippians-4": {
+    swahili: { verse: "Wafilipi 4:13", text: "Nayaweza mambo yote katika yeye anitiaye nguvu." },
+    english: { verse: "Philippians 4:13", text: "I can do all this through him who gives me strength." }
+  },
+};
+
+const bookDefaultVerse: { [key: string]: string } = {
+    "Genesis": "Genesis-1",
+    "Exodus": "Exodus-20",
+    "John": "John-3",
+    "Romans": "Romans-8",
+    "Matthew": "Matthew-28",
+    "Psalms": "Psalms-23",
+    "Proverbs": "Proverbs-3",
+    "Philippians": "Philippians-4",
 };
 
 
@@ -54,8 +75,20 @@ export default function DevotionalCenterPage() {
     return book ? Array.from({ length: book.chapters }, (_, i) => i + 1) : [];
   }, [selectedBook]);
 
-  const scriptureKey = `${selectedBook}-${selectedChapter}`;
-  const displayScripture = sampleVerses[scriptureKey] || sampleVerses[`${selectedBook}-1`] || sampleVerses["Genesis-1"];
+  const displayScripture = useMemo(() => {
+    const specificVerseKey = `${selectedBook}-${selectedChapter}`;
+    // If a specific verse for the selected chapter exists, use it.
+    if (sampleVerses[specificVerseKey]) {
+      return sampleVerses[specificVerseKey];
+    }
+    // Otherwise, check if there's a default verse for the selected book.
+    const defaultVerseKey = bookDefaultVerse[selectedBook];
+    if (defaultVerseKey && sampleVerses[defaultVerseKey]) {
+      return sampleVerses[defaultVerseKey];
+    }
+    // As a final fallback, use Genesis 1:1.
+    return sampleVerses["Genesis-1"];
+  }, [selectedBook, selectedChapter]);
 
   return (
     <div className="flex flex-col gap-8">
