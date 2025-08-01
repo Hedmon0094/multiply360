@@ -11,14 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function Header() {
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6 sticky top-0 z-30">
-      <div className="md:hidden">
+      <div className="sm:hidden">
         <SidebarTrigger />
       </div>
       <div className="w-full flex-1">
