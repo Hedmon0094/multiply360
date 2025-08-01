@@ -23,54 +23,54 @@ export default function DashboardPage() {
         <p className="text-muted-foreground">Welcome back! Here's a summary of your ministry activities.</p>
       </div>
       <DashboardStats />
-      <div className="grid gap-8 lg:grid-cols-3">
-        <div className="lg:col-span-2 grid gap-8">
-            <LeadershipPipeline />
+      
+      <div className="grid gap-8 grid-cols-1 xl:grid-cols-5">
+        <div className="xl:col-span-3">
+          <VerseOfTheDay />
         </div>
-        <div className="grid gap-8">
-            <VerseOfTheDay />
-            <RegionalEngagementChart />
+        <div className="xl:col-span-2 grid gap-8">
+           <RegionalEngagementChart />
         </div>
       </div>
 
-       <Card>
-        <CardHeader>
-          <CardTitle>Recent Activities</CardTitle>
-          <CardDescription>
-            A log of the most recent activities submitted by the field team.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Disciple/Leader</TableHead>
-                <TableHead className="hidden sm:table-cell">Activity</TableHead>
-                <TableHead className="hidden md:table-cell">Region</TableHead>
-                <TableHead className="hidden lg:table-cell">County</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {recentActivities.map((activity, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{activity.disciple}</TableCell>
-                  <TableCell className="hidden sm:table-cell">{activity.activity}</TableCell>
-                  <TableCell className="hidden md:table-cell">{activity.region}</TableCell>
-                  <TableCell className="hidden lg:table-cell">{activity.county}</TableCell>
-                  <TableCell>
-                    <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}
-                      className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400 whitespace-nowrap' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400 whitespace-nowrap'}
-                    >
-                      {activity.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+       <div className="grid gap-8 lg:grid-cols-2">
+         <LeadershipPipeline />
+         <Card>
+            <CardHeader>
+              <CardTitle>Recent Activities</CardTitle>
+              <CardDescription>
+                A log of the most recent activities submitted by the field team.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Disciple/Leader</TableHead>
+                    <TableHead className="hidden sm:table-cell">Activity</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {recentActivities.slice(0, 4).map((activity, index) => (
+                    <TableRow key={index}>
+                      <TableCell className="font-medium">{activity.disciple}</TableCell>
+                      <TableCell className="hidden sm:table-cell">{activity.activity}</TableCell>
+                      <TableCell>
+                        <Badge variant={activity.status === 'Completed' ? 'default' : 'secondary'}
+                          className={activity.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-700 hover:bg-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400 whitespace-nowrap' : 'bg-amber-500/20 text-amber-700 hover:bg-amber-500/30 dark:bg-amber-500/10 dark:text-amber-400 whitespace-nowrap'}
+                        >
+                          {activity.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+      </div>
+
     </div>
   );
 }
